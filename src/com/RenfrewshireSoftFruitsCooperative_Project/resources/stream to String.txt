@@ -1,0 +1,2 @@
+StringBuilder b = new StringBuilder();
+list.forEach(b::append);

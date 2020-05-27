@@ -4,6 +4,7 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 
 import java.io.IOException;
 
@@ -22,5 +23,13 @@ public class Main {
 
         displayString(dateManager.getDate());
         displayString(dateManager.getDateForID());
+
+
+        data.getData().put("GRADE_A", "22 %");
+        MyJSON json = new MyJSON();
+
+        System.out.println(json.write(PathFile.JSON, data));
+
+
     }
 }

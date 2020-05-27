@@ -1,6 +1,8 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.FileInputStream;
 
@@ -17,6 +19,8 @@ public class MyJSON extends FileManagement {
 
     /**
      * This method reads & writes specified JSON File saved in the resources folder.
+     *
+     * Documentation can be found on Google gson github repository at https://github.com/google/gson (visited may-2020)
      *
      * @return String of values taken for JSON File.
      */
@@ -49,6 +53,8 @@ public class MyJSON extends FileManagement {
     /**
      * Writing Json File into resources Folder
      *
+     * Documentation can be found on Google gson github repository at https://github.com/google/gson (visited may-2020)
+     *
      * @param fileName
      * @param data
      * @return True if operation is successful False if not
@@ -56,30 +62,20 @@ public class MyJSON extends FileManagement {
     @Override
     public boolean write(Enum fileName, Data data) {
 
-//        JSONObject object = new JSONObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+        try{ //TODO: add creation of file
 
-//        try{
-//            JsonObject object = null;
-//
-//            //Preparing data for Iteration
-//            Map<String, String> jsonData = data.getData();
-//
-//            //Inserting data into Json Object
-//            for (Map.Entry<String, String> value : jsonData.entrySet()) {
-//                object = (JsonObject) Json.createObjectBuilder().add(value.getKey(), value.getValue());
-//            }
-//
-//            if (null!=object){
-//                FileUtils.write(new File(resourcesPath + "/" + PathFile.JSON + "/" + "jsonTest" + extention),
-//                        object.toString(),
-//                        "UTF-8");
-//            }
-//
-//            return true;
-//        } catch (Exception e) {
-//            System.out.println("ERROR: Could not write File! \nPlease Try Again!");
-//        }
+            String json = gson.toJson(data);
+
+            System.out.println(json);
+            if (!"".equals(gson.toString())) {
+                return true;
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ERROR: Could not write File! \nPlease Try Again!");
+        }
         return false;
     }
 }

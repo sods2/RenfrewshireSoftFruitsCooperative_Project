@@ -30,6 +30,6 @@ public class Main {
 
         System.out.println(json.write(PathFile.JSON, data));
 
-
+        json.read(PathFile.JSON);
     }
 }

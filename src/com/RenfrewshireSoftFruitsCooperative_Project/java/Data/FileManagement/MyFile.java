@@ -25,11 +25,12 @@ public class MyFile extends FileManagement {
      *
      * I use this method for getting the menus and information displayed on the console.
      *
+     * @param fileLocation
      * @return String of values taken for File.
      */
     @Override
-    public Stream<String> read(Enum fileName) {
-        Path filePath = Paths.get(path, fileName + extention );
+    public Stream<String> read(String fileLocation) {
+        Path filePath = Paths.get(path, fileLocation + extention );
         try (Stream<String> lines = Files.lines( filePath )) {
 
             displayStream(lines);
@@ -44,14 +45,19 @@ public class MyFile extends FileManagement {
 
     /**
      * I don't have a need for creating a File as I am using them only for menus display
-     * @param fileName
+     * @param fileLocation
      * @return null
      */
     @Override
-    public boolean write(Enum fileName, Data data) throws IOException {
+    public boolean write(String fileLocation, Data data) throws IOException {
 
-        Files.write(Paths.get(path + "/" + fileName + extention), "content".getBytes());
+        Files.write(Paths.get(path + "/" + fileLocation + extention), "content".getBytes());
 
+        return false;
+    }
+
+    @Override
+    public boolean createNewFile(Object obj, Data data) {
         return false;
     }
 

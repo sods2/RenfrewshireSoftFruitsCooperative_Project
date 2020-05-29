@@ -17,13 +17,17 @@ public class DateManager {
 
         //formatting date
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        String textDate = date.format(formatter);
 
         //returning formatted date
-        return textDate;
+        return date.format(formatter);
 
     }
 
+    /**
+     * Getting Today's date as formatted String for ID generation. will use it for file names.
+     *
+     * @return Formatted Today's date
+     */
     public String getDateForID() {
 
         //getting date
@@ -31,10 +35,9 @@ public class DateManager {
 
         //formatting date
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyy");
-        String textDate = date.format(formatter);
 
         //returning formatted date
-        return textDate;
+        return date.format(formatter);
 
     }
 

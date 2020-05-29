@@ -1,6 +1,9 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -18,7 +21,7 @@ import java.util.HashMap;
  */
 public class MyJSON extends FileManagement {
 
-    private final String path = "src/com/RenfrewshireSoftFruitsCooperative_Project/resources/JSON";
+    private final String resourcePath = "src/com/RenfrewshireSoftFruitsCooperative_Project/resources";
 
     private final String extention = ".json";
 
@@ -27,18 +30,19 @@ public class MyJSON extends FileManagement {
      *
      * Documentation can be found on Google gson github repository at https://github.com/google/gson (visited may-2020)
      *
+     * @param filename
      * @return String of values taken for JSON File.
      */
     @Override
-    public Object read(Enum fileName) {
-        try{ //TODO: change filename
+    public Object read(String filename) {
+        try{
 
             //instantiating Data & Gson
             Data data = new Data();
             Gson gson = new Gson();
 
             //Getting the specified file
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(path + "/" + "Test_JSON2" + extention));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(resourcePath + "/" + PathFile.JSON + "/" + filename + extention));
 
             //Getting Obj from file data
             Object json = gson.fromJson(bufferedReader, Object.class);
@@ -73,28 +77,53 @@ public class MyJSON extends FileManagement {
      *
      * Documentation can be found on Google gson github repository at https://github.com/google/gson (visited may-2020)
      *
-     * @param fileName
+     * @param filename
      * @param data
      * @return True if operation is successful False if not
      */
     @Override
-    public boolean write(Enum fileName, Data data) {
+    public boolean write(String filename, Data data) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        try{ //TODO: add creation of file & change filename
-            String json = gson.toJson(data.getData());
-//            System.out.println(json);
+        try{
+            String json;
+
+            if (null!=data) {
+                json = gson.toJson(data.getData());
+            } else {
+                System.out.println("No data found while attempting to create the file.");
+                return false;
+            }
 
             if (!"".equals(gson.toString())) {
-//                gson.toJson(json, new FileWriter(path + "/" + "Test_JSON" + extention));
-                Files.write(Paths.get(path + "/" + "Test_JSON2" + extention), json.getBytes());
+                Files.write(Paths.get(resourcePath + "/" + PathFile.JSON + "/"+ filename + extention), json.getBytes());
                 return true;
             }
             return true;
         } catch (Exception e) {
             System.out.println("ERROR: Could not write File! \nPlease Try Again!");
         }
+        return false;
+    }
+
+    @Override
+    public boolean createNewFile(Object obj, Data data) {
+        Batch batch;
+
+        try{
+
+            if (obj instanceof Batch){
+                batch = (Batch) obj;
+
+                return write(batch.getId(), data);
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROR: Could not write File! \nPlease Try Again!");
+        }
+
         return false;
     }
 }

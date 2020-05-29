@@ -3,7 +3,6 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -16,13 +15,20 @@ public abstract class FileManagement {
      * @param fileName
      * @return File object
      */
-    public abstract Object read(Enum fileName);
+    public abstract Object read(String fileName);
 
     /**
      * Write File
      * @param fileName
      * @return File object
      */
-    public abstract boolean write(Enum fileName , Data data) throws IOException;
+    public abstract boolean write(String fileName , Data data) throws IOException;
+
+    /**
+     * Creating new JSON File
+     *
+     * @return true when successful | false if not
+     */
+    public abstract boolean createNewFile(Object obj, Data data);
 
 }

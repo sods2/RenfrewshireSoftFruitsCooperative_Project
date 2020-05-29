@@ -5,6 +5,15 @@
 '--'   '--'  `----' `--'  `---'  `---'  `--`--`--'  `----'
            Renfrewshire Soft Fruits Cooperative
 
-           1.
 
-           2.
+            Choose an option:
+
+               1. Create a new batch
+
+               2. List all batches
+
+               3. View details of a batch
+
+               4. Sort\Grade a batch
+
+               5. Quit

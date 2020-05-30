@@ -3,6 +3,7 @@ package com.RenfrewshireSoftFruitsCooperative_Project;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.FruitGrade;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
@@ -10,14 +11,20 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.STRAWBERRIES;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+
+        while (true){
+            new Console().run();
+        }
+    }
+
+    private static void test() throws IOException {
         MyFile myFile = new MyFile();
         Data data = new Data();
         myFile.write(PathFile.TEST.toString(), data);
@@ -53,7 +60,5 @@ public class Main {
             data.getData().keySet().forEach(System.out::println);
             data.getData().values().forEach(System.out::println);
         }
-
-
     }
 }

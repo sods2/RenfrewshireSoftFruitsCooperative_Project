@@ -1,5 +1,6 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 
 import java.io.*;
@@ -8,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.TEXT_EXERTION;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayStream;
 
 /**
@@ -17,8 +19,7 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
  */
 public class MyFile extends FileManagement {
 
-    private final String path = "src/com/RenfrewshireSoftFruitsCooperative_Project/resources/Console";
-    private final String extention = ".txt";
+    private final String path = "src/com/RenfrewshireSoftFruitsCooperative_Project/resources";
 
     /**
      * This method reads a specified File saved in the resources folder.
@@ -30,7 +31,7 @@ public class MyFile extends FileManagement {
      */
     @Override
     public Stream<String> read(String fileLocation) {
-        Path filePath = Paths.get(path, fileLocation + extention );
+        Path filePath = Paths.get(path, PathFile.CONSOLE + "/" + fileLocation + TEXT_EXERTION );
         try (Stream<String> lines = Files.lines( filePath )) {
 
             displayStream(lines);
@@ -51,7 +52,7 @@ public class MyFile extends FileManagement {
     @Override
     public boolean write(String fileLocation, Data data) throws IOException {
 
-        Files.write(Paths.get(path + "/" + fileLocation + extention), "content".getBytes());
+//        Files.write(Paths.get(path + "/" + PathFile.CONSOLE + "/" + fileLocation + TEXT_EXERTION), "content".getBytes());
 
         return false;
     }

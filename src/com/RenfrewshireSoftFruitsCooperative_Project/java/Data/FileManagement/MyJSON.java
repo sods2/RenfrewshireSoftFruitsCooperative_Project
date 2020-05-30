@@ -1,7 +1,6 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import com.google.gson.Gson;
@@ -14,6 +13,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.JSON_EXERTION;
+
 /**
  * Using this class to Read & write JSON files
  *
@@ -22,8 +23,6 @@ import java.util.HashMap;
 public class MyJSON extends FileManagement {
 
     private final String resourcePath = "src/com/RenfrewshireSoftFruitsCooperative_Project/resources";
-
-    private final String extention = ".json";
 
     /**
      * This method reads & writes specified JSON File saved in the resources folder.
@@ -42,7 +41,7 @@ public class MyJSON extends FileManagement {
             Gson gson = new Gson();
 
             //Getting the specified file
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(resourcePath + "/" + PathFile.JSON + "/" + filename + extention));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(resourcePath + "/" + PathFile.JSON + "/" + filename + JSON_EXERTION));
 
             //Getting Obj from file data
             Object json = gson.fromJson(bufferedReader, Object.class);
@@ -97,7 +96,7 @@ public class MyJSON extends FileManagement {
             }
 
             if (!"".equals(gson.toString())) {
-                Files.write(Paths.get(resourcePath + "/" + PathFile.JSON + "/"+ filename + extention), json.getBytes());
+                Files.write(Paths.get(resourcePath + "/" + PathFile.JSON + "/"+ filename + JSON_EXERTION), json.getBytes());
                 return true;
             }
             return true;

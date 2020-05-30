@@ -1,0 +1,13 @@
+,--.  ,--.         ,--.
+|  '--'  |  ,---.  |  |  ,---.
+|  .--.  | | .-. : |  | | .-. |
+|  |  |  | \   --. |  | | '-' '
+`--'  `--'  `----' `--' |  |-'
+                        `--'
+    Choose an option:
+
+       help (Display options again)
+
+       back (Try typing input again)
+
+       exit (Exit application)

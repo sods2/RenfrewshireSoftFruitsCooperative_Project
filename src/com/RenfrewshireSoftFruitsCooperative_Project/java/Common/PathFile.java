@@ -10,7 +10,8 @@ public enum PathFile {
 
     //Console
     CONSOLE("Console"),
-    MENU("Menu");
+    MENU("Menu"),
+    HELPMENU("HelpMenu");
 
     private String pathString;
 

@@ -58,7 +58,7 @@ public class MyFile extends FileManagement {
     }
 
     @Override
-    public boolean createNewFile(Object obj, Data data) {
+    public boolean createNewFile(String filename, Data data) {
         return false;
     }
 

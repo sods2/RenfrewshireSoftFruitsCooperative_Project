@@ -18,19 +18,19 @@ public class BatchManager {
 
     /**
      * Checking the farm's number format
-     * @param fnum farm's number
+     * @param num farm's number
      * @return farm number with right format or empty string when format is wrong
      */
-    public boolean checkFarmN(String fnum) {
+    public String checkFarmN(String num) {
 
-        if (String.format("%03d", fnum).equals(fnum)) {
-            return true;
+        if (0<Integer.parseInt(num)){
+            return String.format("%03d", Integer.valueOf(num));
         }
 
         System.out.println("Farm number is incorrect!\n" +
                 "The right format is 001 to 999\n" +
                 "Try entering the number again.");
-        return false;
+        return "";
     }
 
 }

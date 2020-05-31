@@ -48,12 +48,12 @@ public class Main {
 
         MyJSON json = new MyJSON();
 
-        System.out.println(json.createNewFile(batch,data));
+        System.out.println(json.createNewFile(batch.getId(),data));
 
         //Read JSON
         String jsonStr;
 
-        if(json.read("300520-ST-001") instanceof Data){
+        if(json.read("300520-ST-001") != null){
 
             data = (Data) json.read("300520-ST-001");
 

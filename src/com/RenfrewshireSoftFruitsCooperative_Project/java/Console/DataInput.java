@@ -14,7 +14,7 @@ public class DataInput {
      *
      * @return returns input or empty string is no input was passed
      */
-    public static String getInput() {
+    public static String getMenuInput() {
         String cmd = "";
         int attempt= 0;
 
@@ -38,8 +38,30 @@ public class DataInput {
                 if (checkAttemptN(attempt)){
                     new Console().displayHelpMenu();
                 }
+            }
 
-//                helpCommands(cmd);
+        } catch (Exception e) {
+            System.out.println("Error while reading input\n" +
+                    "Please try again!");
+        }
+
+        return "";
+    }
+
+    public static String getUserInput() {
+        String cmd = "";
+
+        try {
+            //using line just for spacing
+            System.out.println();
+            //Getting input value while the field is left empty
+            while (!(cmd = scanner.next()).isEmpty()){
+
+                if (cmd.equals("exit")){
+                    trafficLight( new Console(), cmd);
+                }
+                    //returning the command
+                    return cmd;
             }
 
         } catch (Exception e) {
@@ -73,6 +95,51 @@ public class DataInput {
      */
     public static boolean checkAttemptN(int attempt) {
         return attempt >= MAX_INPUT_ATTEMPT;
+    }
+
+
+    /**
+     * Validate if the user wishes to continue or not
+     * @return true if the user wishes to continue
+     */
+    public static boolean validation() {
+        System.out.println();
+        System.out.println("    Please input Y or N to continue with the changes!");//TODO: change message
+        return getUserInput().toUpperCase().equals("Y");//TODO: upper case creates problems when inserting Y / try ignoreCase
+    }
+
+
+    /**
+     * This method is used to manage the user interface
+     * @param input input inserted
+     */
+    public static void trafficLight(Console console, String input){//TODO: check possible alternative
+        switch (input){
+            case "help": //Get Help Menu
+                console.displayMainMenu();
+                break;
+            case "back": //Keep trying
+                console.back();
+                break;
+
+            case "1": //Create New Branch
+                console.CreateNewBranch();
+                break;
+            case "2": //List all batches
+
+                break;
+            case "3": //View details of a batch
+
+                break;
+            case "4": //Sort\Grade a batch
+
+                break;
+            //EXIT Application
+            case "exit": case "5":
+                console.exit();
+            default://Should never be called
+//                console.displayMainMenu();
+        }
     }
 
 }

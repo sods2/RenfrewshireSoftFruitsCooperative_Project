@@ -9,7 +9,7 @@ public class Batch {
 
     private String id;
 
-    private String recievedDate;
+    private String receivedDate;
 
     private int weight;
 
@@ -34,7 +34,7 @@ public class Batch {
         this.fruitType = fruitType;
         this.Grades = grades;
         setId();
-        setRecievedDate();
+        setReceivedDate();
     }
 
     public String getId() {
@@ -46,13 +46,13 @@ public class Batch {
         this.id = idGenerator.createID();
     }
 
-    public String getRecievedDate() {
-        return recievedDate;
+    public String getReceivedDate() {
+        return receivedDate;
     }
 
-    public void setRecievedDate() {
+    public void setReceivedDate() {
         DateManager dateManager = new DateManager();
-        this.recievedDate = dateManager.getDate();
+        this.receivedDate = dateManager.getDate();
     }
 
     public int getWeight() {

@@ -1,9 +1,13 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.CreateNewBatch;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
-import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.getInput;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 
 public class Console {
 
@@ -33,9 +37,18 @@ public class Console {
     /**
      * Getting Command from user
      */
-    public void getCommand() {
-        String input = getInput();
-        trafficLight(input);
+    public String getCommand() {
+        String input = getMenuInput();
+        trafficLight(this, input);
+        return input;
+    }
+
+    /**
+     * Getting Command from user
+     */
+    public String getInput() {
+        String input = getUserInput();
+        return input;
     }
 
     /**
@@ -54,35 +67,21 @@ public class Console {
     }
 
     /**
-     * This method is used to manage the user interface
-     * @param input input inserted
+     * Create New Branch
      */
-    public void trafficLight(String input){//TODO: check possible alternative
-        switch (input){
-            case "help":
-                displayMainMenu();
-                break;
-            case "back":
-                back();
-                break;
-            case "exit": case "5":
-                exit();
-            default:
-                displayMainMenu();
-        }
-
-//        switch (Command.valueOf(input)){
-//            case HELP:
-//                displayMainMenu();
-//                break;
-//            case BACK:
-//                back();
-//                break;
-//            case EXIT: case _5:
-//                exit();
-//            default:
-//                displayMainMenu();
-//        }
+    public boolean createNewJSON(String FileName, Data data) {
+        MyJSON json = new MyJSON();
+        return json.createNewFile(FileName,data);
     }
+
+    /**
+     * Create New Branch
+     */
+    public void CreateNewBranch() {
+        CreateNewBatch createNewBatch = new CreateNewBatch();
+        createNewBatch.create(this);
+    }
+
+
 
 }

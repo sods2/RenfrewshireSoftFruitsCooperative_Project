@@ -33,7 +33,7 @@ public class MyJSON extends FileManagement {
      * @return String of values taken for JSON File.
      */
     @Override
-    public Object read(String filename) {
+    public Data read(String filename) {
         try{
 
             //instantiating Data & Gson
@@ -106,18 +106,19 @@ public class MyJSON extends FileManagement {
         return false;
     }
 
+    /**
+     * Create a new File
+     * @param filename
+     * @param data
+     * @return true if successful
+     */
     @Override
-    public boolean createNewFile(Object obj, Data data) {
-        Batch batch;
+    public boolean createNewFile(String filename, Data data) {
 
         try{
 
-            if (obj instanceof Batch){
-                batch = (Batch) obj;
+            return write(filename, data);
 
-                return write(batch.getId(), data);
-
-            }
 
         } catch (Exception e) {
             System.out.println("ERROR: Could not write File! \nPlease Try Again!");

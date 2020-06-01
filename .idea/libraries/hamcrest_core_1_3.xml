@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="hamcrest-core-1.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/com/RenfrewshireSoftFruitsCooperative_Project/resources/Jars/Junit/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/RenfrewshireSoftFruitsCooperative_Project/resources/Jars/Junit/junit-4.12.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/src/com/RenfrewshireSoftFruitsCooperative_Project/resources/Jars/Junit/junit-4.12-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/RenfrewshireSoftFruitsCooperative_Project/resources/Jars/Junit/hamcrest-core-1.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

@@ -2,7 +2,6 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -97,6 +96,8 @@ public class MyJSON extends FileManagement {
 
             if (!"".equals(gson.toString())) {
                 Files.write(Paths.get(resourcePath + "/" + PathFile.JSON + "/"+ filename + JSON_EXERTION), json.getBytes());
+                System.out.println();
+                System.out.println("    File Created Successfully!");
                 return true;
             }
             return true;

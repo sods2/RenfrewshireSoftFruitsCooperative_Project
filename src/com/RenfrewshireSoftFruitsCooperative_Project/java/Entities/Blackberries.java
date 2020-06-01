@@ -4,7 +4,7 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constant
 
 public class Blackberries extends Fruit {
 
-    public Blackberries(String ID, String name, double price) {
-        super(ID, name, price, BLACKBERRIES);
+    public Blackberries() {
+        super("3", "BLACKBERRIES", 0, BLACKBERRIES);
     }
 }

@@ -13,7 +13,7 @@ public class BatchManager {
      */
     public boolean checkBatchWeight(int weight) {
 
-        return weight < 100 && weight > 0;
+        return weight <= 100 && weight > 0;
     }
 
     /**

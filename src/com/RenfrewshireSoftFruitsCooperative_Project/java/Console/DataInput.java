@@ -103,9 +103,19 @@ public class DataInput {
      * @return true if the user wishes to continue
      */
     public static boolean validation() {
+        String input;
         System.out.println();
-        System.out.println("    Please input Y or N to continue with the changes!");//TODO: change message
-        return getUserInput().toUpperCase().equals("Y");//TODO: upper case creates problems when inserting Y / try ignoreCase
+        System.out.println("    Please input Y or N to continue with the changes!");
+
+        //Keep the loop on until Y or N are selected
+        while (!(input = getUserInput()).equalsIgnoreCase("Y")) {
+            if (input.equalsIgnoreCase("N")) {//if N is selected exit the loop
+                return false;
+            }
+            System.out.println("    The input selected was wrong!\n" +
+                    "    Please input Y or N to continue!");
+        }
+        return true;
     }
 
 

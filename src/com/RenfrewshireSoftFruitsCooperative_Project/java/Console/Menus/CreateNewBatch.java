@@ -44,7 +44,7 @@ public class CreateNewBatch {
             System.out.println();
 
             //Insert Farm Number
-            insertFarmN();
+            insertFarmN();//TODO: add check for characters (Goes in error)
 
             //Insert a fruit type
             insertFruitType();

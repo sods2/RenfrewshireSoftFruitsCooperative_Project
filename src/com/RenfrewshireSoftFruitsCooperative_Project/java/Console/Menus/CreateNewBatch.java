@@ -44,7 +44,7 @@ public class CreateNewBatch {
             System.out.println();
 
             //Insert Farm Number
-            insertFarmN();//TODO: add check for characters (Goes in error)
+            insertFarmN();
 
             //Insert a fruit type
             insertFruitType();
@@ -70,7 +70,7 @@ public class CreateNewBatch {
     //Insert Farm Number
     private void insertFarmN(){
         System.out.println("    Enter Farm N.   (eg. 001 to 999)");
-        farmN = batchManager.checkFarmN(console.getInput());
+        while ((farmN = batchManager.checkFarmN(console.getInput())).isEmpty());
     }
 
     //Insert a fruit type
@@ -90,18 +90,10 @@ public class CreateNewBatch {
         }
     }
 
-    //Insert batch weight
     private void insertBatchWeight(){
         System.out.println("    Enter batch weight in KG’s (N.B. Max weight per batch is 100Kg).");
         //keep asking weight until is write ( > 0 & <= 100 )
-        int batchLoop = 0;
-        while (!(batchManager.checkBatchWeight(Integer.parseInt(weight)))){
-            if(batchLoop>0){
-                System.out.println("    The Weight inserted is invalid.");
-            }
-            weight = console.getInput();
-            batchLoop++;
-        }
+        while ((weight = batchManager.checkBatchWeight(console.getInput())).isEmpty());
     }
 
     //Create File Validation

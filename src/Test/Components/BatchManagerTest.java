@@ -18,10 +18,10 @@ public class BatchManagerTest {
     @Test
     public void checkBatchWeight() {
 
-        Assert.assertFalse (batchManager.checkBatchWeight(0));
-        Assert.assertTrue (batchManager.checkBatchWeight(100));
-        Assert.assertTrue (batchManager.checkBatchWeight(50));
-        Assert.assertFalse (batchManager.checkBatchWeight(101));
+        Assert.assertTrue (batchManager.checkBatchWeight("0").isEmpty());
+        Assert.assertFalse (batchManager.checkBatchWeight("100").isEmpty());
+        Assert.assertFalse (batchManager.checkBatchWeight("50").isEmpty());
+        Assert.assertTrue (batchManager.checkBatchWeight("101").isEmpty());
 
     }
 

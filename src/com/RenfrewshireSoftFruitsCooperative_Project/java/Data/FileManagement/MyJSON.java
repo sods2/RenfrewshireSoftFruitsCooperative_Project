@@ -8,8 +8,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.JSON_EXERTION;
@@ -94,8 +92,12 @@ public class MyJSON extends FileManagement {
                 return false;
             }
 
-            if (!"".equals(gson.toString())) {
-                Files.write(Paths.get(resourcePath + "/" + PathFile.JSON + "/"+ filename + JSON_EXERTION), json.getBytes());
+            if (!gson.toString().isEmpty()) {
+                FileWriter fWriter = new FileWriter(resourcePath + "/" + PathFile.JSON + "/"+ filename + JSON_EXERTION);
+                BufferedWriter out = new BufferedWriter(fWriter);
+                out.write(json);
+                out.close();
+
                 System.out.println();
                 System.out.println("    File Created Successfully!");
                 return true;

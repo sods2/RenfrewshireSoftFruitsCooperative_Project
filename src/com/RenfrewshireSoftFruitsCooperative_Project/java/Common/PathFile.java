@@ -3,6 +3,7 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Common;
 public enum PathFile {
 
     //TESTs
+    TESTPATH("Test"),
     TEST("FileTest"),
 
     //JSON

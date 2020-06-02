@@ -1,5 +1,7 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Common;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
+
 public class IDGenerator {
 
     private String fruitType;

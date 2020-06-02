@@ -1,5 +1,7 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
+
 /**
  * All operation fo batch are executed on this class
  */
@@ -18,12 +20,12 @@ public class BatchManager {
             if (Integer.parseInt(weight) <= 100 && Integer.parseInt(weight) > 0) {
                 return weight;
             } else {
-                System.out.println("    The Weight inserted is invalid.\n" +
+                displayString("    The Weight inserted is invalid.\n" +
                         "   (eg. > 0 to <= 100)");
             }
 
         } catch (Exception e) {
-            System.out.println("    The Weight inserted is invalid.\n" +
+            displayString("    The Weight inserted is invalid.\n" +
                     "   (eg. > 0 to <= 100)");
         }
         return "";
@@ -41,7 +43,7 @@ public class BatchManager {
                 return String.format("%03d", Integer.valueOf(num));
             }
         } catch (Exception e) {
-            System.out.println("Farm number is incorrect!\n" +
+            displayString("Farm number is incorrect!\n" +
                     "The right format is 001 to 999\n" +
                     "Try entering the number again.");
             return "";

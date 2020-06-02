@@ -2,6 +2,8 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
+
 public class DataManager {
 
     /**
@@ -21,7 +23,7 @@ public class DataManager {
             return data;
 
         } catch (Exception e) {
-            System.out.println("Error while processing The inserted Data!\n" +
+            displayString("Error while processing The inserted Data!\n" +
                     "Please try again!");
         }
 

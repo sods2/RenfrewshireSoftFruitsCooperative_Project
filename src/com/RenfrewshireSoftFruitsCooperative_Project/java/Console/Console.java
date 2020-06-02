@@ -5,7 +5,6 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.CreateNe
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 

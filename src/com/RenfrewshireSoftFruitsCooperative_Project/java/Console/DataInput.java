@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.MAX_INPUT_ATTEMPT;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Command.COMMAND_LIST;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 public class DataInput {
 
@@ -20,7 +21,7 @@ public class DataInput {
 
         try {
             //using line just for spacing
-            System.out.println();
+            displayString("");
             //Getting input value while the field is left empty
             while (!(cmd = scanner.next()).isEmpty()){
 
@@ -29,7 +30,7 @@ public class DataInput {
                     //returning the command
                     return cmd;
                 } else {
-                    System.out.println("You entered an invalid command\n" +
+                    displayString("You entered an invalid command\n" +
                             "Please try again!");
                 }
                 attempt++;
@@ -41,7 +42,7 @@ public class DataInput {
             }
 
         } catch (Exception e) {
-            System.out.println("Error while reading input\n" +
+            displayString("Error while reading input\n" +
                     "Please try again!");
         }
 
@@ -53,7 +54,7 @@ public class DataInput {
 
         try {
             //using line just for spacing
-            System.out.println();
+            displayString("");
             //Getting input value while the field is left empty
             while (!(cmd = scanner.next()).isEmpty()){
 
@@ -65,7 +66,7 @@ public class DataInput {
             }
 
         } catch (Exception e) {
-            System.out.println("Error while reading input\n" +
+            displayString("Error while reading input\n" +
                     "Please try again!");
         }
 
@@ -104,15 +105,15 @@ public class DataInput {
      */
     public static boolean validation() {
         String input;
-        System.out.println();
-        System.out.println("    Please input Y or N to continue with the changes!");
+        displayString("");
+        displayString("    Please input Y or N to continue with the changes!");
 
         //Keep the loop on until Y or N are selected
         while (!(input = getUserInput()).equalsIgnoreCase("Y")) {
             if (input.equalsIgnoreCase("N")) {//if N is selected exit the loop
                 return false;
             }
-            System.out.println("    The input selected was wrong!\n" +
+            displayString("    The input selected was wrong!\n" +
                     "    Please input Y or N to continue!");
         }
         return true;

@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.TEXT_EXERTION;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayStream;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
  * Using this class to Read Files
@@ -38,7 +39,7 @@ public class MyFile extends FileManagement {
             return lines;
 
             } catch (NullPointerException | IOException e) {
-                System.out.println("File not Found! \nTry restarting Application.");
+                displayString("File not Found! \nTry restarting Application.");
             }
 
             return null;

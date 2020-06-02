@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.JSON_EXERTION;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
  * Using this class to Read & write JSON files
@@ -59,9 +60,9 @@ public class MyJSON extends FileManagement {
             return data;
 
         } catch (FileNotFoundException e) {
-            System.out.println("Could not read File! \nTry restarting Application.");
+            displayString("Could not read File! \nTry restarting Application.");
         } catch (NullPointerException e) {
-            System.out.println("File not Found! \nTry restarting Application.");
+            displayString("File not Found! \nTry restarting Application.");
         }
 
         return null;
@@ -88,23 +89,25 @@ public class MyJSON extends FileManagement {
             if (null!=data) {
                 json = gson.toJson(data.getData());
             } else {
-                System.out.println("No data found while attempting to create the file.");
+                displayString("No data found while attempting to create the file.");
                 return false;
             }
 
             if (!gson.toString().isEmpty()) {
+                //creating File in path
                 FileWriter fWriter = new FileWriter(resourcePath + "/" + PathFile.JSON + "/"+ filename + JSON_EXERTION);
                 BufferedWriter out = new BufferedWriter(fWriter);
                 out.write(json);
+                //closing buffer
                 out.close();
 
-                System.out.println();
-                System.out.println("    File Created Successfully!");
+                displayString("");
+                displayString("    File Created Successfully!");
                 return true;
             }
             return true;
         } catch (Exception e) {
-            System.out.println("ERROR: Could not write File! \nPlease Try Again!");
+            displayString("ERROR: Could not write File! \nPlease Try Again!");
         }
         return false;
     }
@@ -122,9 +125,8 @@ public class MyJSON extends FileManagement {
 
             return write(filename, data);
 
-
         } catch (Exception e) {
-            System.out.println("ERROR: Could not write File! \nPlease Try Again!");
+            displayString("ERROR: Could not write File! \nPlease Try Again!");
         }
 
         return false;

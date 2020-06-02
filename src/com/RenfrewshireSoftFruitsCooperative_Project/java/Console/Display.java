@@ -14,9 +14,14 @@ public class Display {
      * @param data Data to be displayed
      */
     public static void displayString(String data){
-        if(!data.isEmpty()){
-            System.out.println(data);
-        } else {
+        //don't really need the try, I am using it just for security in case something goes wrong
+        try {
+            if(!data.isEmpty()){
+                System.out.println(data);
+            } else {
+                System.out.println();
+            }
+        } catch (Exception e) {
             System.out.println("Data not Found!");
         }
     }
@@ -29,7 +34,7 @@ public class Display {
         if(null!=data){
             data.forEach(System.out::println);
         } else {
-            System.out.println("Data not Found!");
+            displayString("Data not Found!");
         }
     }
 

@@ -1,6 +1,6 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus;
 
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.DateManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.FruitManager;
@@ -11,6 +11,7 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import java.util.HashMap;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.validation;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
  * I am using this Class to create the Console UI for the Creation of a New Batch
@@ -36,12 +37,12 @@ public class CreateNewBatch {
 
         try {
 
-            System.out.println("    ---    Create New Batch     ---");
-            System.out.println();
+            displayString("    ---    Create New Batch     ---");
+            displayString("");
 
             //Getting Today's Date
-            System.out.println("    Date: " + date);
-            System.out.println();
+            displayString("    Date: " + date);
+            displayString("");
 
             //Insert Farm Number
             insertFarmN();
@@ -56,11 +57,11 @@ public class CreateNewBatch {
             CreateFile_Validation();
 
             //Go back to main menu
-            System.out.println();
+            displayString("");
             console.displayMainMenu();
 
         } catch (Exception e) {
-            System.out.println("Error creating the new Batch\n" +
+            displayString("Error creating the new Batch\n" +
                     "Please try again.");
         }
 
@@ -69,21 +70,21 @@ public class CreateNewBatch {
 
     //Insert Farm Number
     private void insertFarmN(){
-        System.out.println("    Enter Farm N.   (eg. 001 to 999)");
+        displayString("    Enter Farm N.   (eg. 001 to 999)");
         while ((farmN = batchManager.checkFarmN(console.getInput())).isEmpty());
     }
 
     //Insert a fruit type
     private void insertFruitType(){
-        System.out.println("    Select a fruit type:");
-        System.out.println("        1. Strawberries");
-        System.out.println("        2. Raspberries");
-        System.out.println("        3. Blackberries");
-        System.out.println("        4. Gooseberries");
+        displayString("    Select a fruit type:");
+        displayString("        1. Strawberries");
+        displayString("        2. Raspberries");
+        displayString("        3. Blackberries");
+        displayString("        4. Gooseberries");
         int fruitLoop = 0;
         while ("".equalsIgnoreCase(fruitType = fruitManager.getFruitCodesByID(fruitType))){
             if(fruitLoop>0){
-                System.out.println("    Fruit not in the list, please try again.");
+                displayString("    Fruit not in the list, please try again.");
             }
             fruitType = console.getInput();
             fruitLoop++;
@@ -91,14 +92,14 @@ public class CreateNewBatch {
     }
 
     private void insertBatchWeight(){
-        System.out.println("    Enter batch weight in KG’s (N.B. Max weight per batch is 100Kg).");
+        displayString("    Enter batch weight in KG’s (N.B. Max weight per batch is 100Kg).");
         //keep asking weight until is write ( > 0 & <= 100 )
         while ((weight = batchManager.checkBatchWeight(console.getInput())).isEmpty());
     }
 
     //Create File Validation
     private void CreateFile_Validation(){
-        System.out.println("    This batch contains " + weight +
+        displayString("    This batch contains " + weight +
                 "KG of " + fruitManager.getFruitNameByCode(fruitType) +
                 " From Farm-Number: " + farmN +
                 " received on: " + date);
@@ -108,7 +109,7 @@ public class CreateNewBatch {
             data = new DataManager().processData(batch, batch.getId());
             console.createNewJSON(batch.getId(), data);
         } else {
-            System.out.println("The file was not created!");
+            displayString("The file was not created!");
         }
     }
 

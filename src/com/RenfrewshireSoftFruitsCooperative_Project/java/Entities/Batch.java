@@ -1,6 +1,6 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Entities;
 
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.DateManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.IDGenerator;
 
 import java.util.HashMap;

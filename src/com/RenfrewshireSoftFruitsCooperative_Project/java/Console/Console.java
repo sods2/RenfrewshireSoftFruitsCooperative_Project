@@ -8,7 +8,7 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.My
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 
-public class Console {
+public class Console {//TODO: refactor for using use File manages
 
     MyFile myFile = new MyFile();
 

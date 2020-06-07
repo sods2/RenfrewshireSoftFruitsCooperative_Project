@@ -32,7 +32,7 @@ public class ListAllBatches {
             //getting data from all files
             data = fileManagement.readAll(folder, files);
 
-            batchList = dataManager.processBatchData(data.getData());
+            batchList = dataManager.processBatchData(data);
 
             batchList.forEach(e -> displayString(e.getId() + e.getFruitType() + e.getFarmN() + "KG " + e.getReceivedDate()));
 

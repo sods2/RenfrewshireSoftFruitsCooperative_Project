@@ -34,17 +34,17 @@ public class DataManager {
         return null;
     }
 
-    public List<Batch> processBatchData(HashMap<String, Object> map){
+    public List<Batch> processBatchData(Data data){
 
         List<Batch> batchList = new ArrayList<>();
-        Batch batch = new Batch();
+        Batch batch;
         Gson gson = new Gson();
         String json;
 
         try {
 
             //deserialize json
-            for(Map.Entry<String, Object> entry: map.entrySet()) {
+            for(Map.Entry<String, Object> entry: data.getData().entrySet()) {
                 json = gson.toJson(entry.getValue());
                 batch = gson.fromJson(json, Batch.class);
                 batchList.add(batch);

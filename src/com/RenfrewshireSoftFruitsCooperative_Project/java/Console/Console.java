@@ -3,14 +3,15 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.CreateNewBatch;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 
-public class Console {//TODO: refactor for using use File manages
+public class Console {
 
-    MyFile myFile = new MyFile();
+    FileManagement fileManagement = new MyFile();
 
     /**
      * Running the application
@@ -54,7 +55,7 @@ public class Console {//TODO: refactor for using use File manages
      * Display Main Menu
      */
     public void displayMainMenu() {
-        myFile.read(PathFile.MENU.toString());
+        fileManagement.read(PathFile.MENU.toString());
         getCommand();
     }
 
@@ -62,7 +63,7 @@ public class Console {//TODO: refactor for using use File manages
      * Display Help Menu
      */
     public void displayHelpMenu() {
-        myFile.read(PathFile.HELPMENU.toString());
+        fileManagement.read(PathFile.HELPMENU.toString());
     }
 
     /**

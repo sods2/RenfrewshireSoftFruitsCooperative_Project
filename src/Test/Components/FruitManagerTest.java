@@ -24,10 +24,10 @@ public class FruitManagerTest {
     public void getFruitCodesByID() {
 
         Assert.assertTrue(fruitManager.getFruitCodesByID("0").isEmpty());
-        Assert.assertNotNull(fruitManager.getFruitCodesByID("1"));
-        Assert.assertNotNull(fruitManager.getFruitCodesByID("2"));
-        Assert.assertNotNull(fruitManager.getFruitCodesByID("3"));
-        Assert.assertNotNull(fruitManager.getFruitCodesByID("4"));
+        Assert.assertFalse(fruitManager.getFruitCodesByID("1").isEmpty());
+        Assert.assertFalse(fruitManager.getFruitCodesByID("2").isEmpty());
+        Assert.assertFalse(fruitManager.getFruitCodesByID("3").isEmpty());
+        Assert.assertFalse(fruitManager.getFruitCodesByID("4").isEmpty());
         Assert.assertTrue(fruitManager.getFruitCodesByID("5").isEmpty());
 
     }
@@ -48,10 +48,10 @@ public class FruitManagerTest {
     public void getFruitNameByCode() {
 
         Assert.assertEquals(fruitManager.getFruitNameByCode(""), "null");
-        Assert.assertNotNull(fruitManager.getFruitNameByCode("ST"));
-        Assert.assertNotNull(fruitManager.getFruitNameByCode("RA"));
-        Assert.assertNotNull(fruitManager.getFruitNameByCode("BL"));
-        Assert.assertNotNull(fruitManager.getFruitNameByCode("GO"));
+        Assert.assertFalse(fruitManager.getFruitNameByCode("ST").isEmpty());
+        Assert.assertFalse(fruitManager.getFruitNameByCode("RA").isEmpty());
+        Assert.assertFalse(fruitManager.getFruitNameByCode("BL").isEmpty());
+        Assert.assertFalse(fruitManager.getFruitNameByCode("GO").isEmpty());
         Assert.assertEquals(fruitManager.getFruitNameByCode("z"), "null");
 
     }

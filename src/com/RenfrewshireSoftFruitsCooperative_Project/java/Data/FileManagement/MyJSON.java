@@ -39,19 +39,19 @@ public class MyJSON extends FileManagement {
             Gson gson = new Gson();
 
             //Getting the specified file
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(resourcePath + "/" + PathFile.JSON + "/" + filename + JSON_EXERTION));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(resourcePath + "/" + PathFile.JSON.toString() + "/" + filename + JSON_EXERTION));
 
             //Getting Obj from file data
             Object json = gson.fromJson(bufferedReader, Object.class);
 
             //Creating desired type for json deserialization
-            Type type = new TypeToken<HashMap<String, String>>() {}.getType();
+            Type type = new TypeToken<HashMap<String, Object>>() {}.getType();
 
             //getting json String
             String s = gson.toJson(json, type);
 
             //populating HashMap with File's data
-            HashMap<String, String> stringData = gson.fromJson(s, type);
+            HashMap<String, Object> stringData = gson.fromJson(s, type);
 
             //getting value to the Data obj
             data.getData().putAll(stringData);

@@ -2,6 +2,7 @@ package Test.Data;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import org.junit.After;
@@ -11,28 +12,27 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
 public class MyFileTest {
 
-    MyFile myFile = new MyFile();
-    Data data = new Data();
-    Batch batch;
+    FileManagement fileManagement;
+    Object obj;
 
     @Before
     public void before(){
-        batch = new Batch(10, "001", "ST", new HashMap<>());
-        data.getData().put(batch.getId(), batch);
+        fileManagement = new MyFile();
     }
 
     @Test
     public void read() throws IOException {
-//        Assert.assertNotNull(myFile.write(PathFile.TESTPATH.toString() + "/" + PathFile.TEST.toString(), data));//TODO
+        Assert.assertNotNull(obj = fileManagement.read(PathFile.TESTPATH.toString() + "/" + PathFile.TEST.toString()));
     }
 
     @After
     public void after(){
-
+        fileManagement = null;
     }
 }

@@ -1,5 +1,6 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
@@ -107,7 +108,7 @@ public class CreateNewBatch {
         if (validation()){
             batch = new Batch(Integer.parseInt(weight), farmN, fruitType, new HashMap<>());
             data = new DataManager().processData(batch, batch.getId());
-            console.createNewJSON(batch.getId(), data);
+            console.createNewJSON(PathFile.BATCH.toString() + "/" + batch.getId(), data);
         } else {
             displayString("The file was not created!");
         }

@@ -7,8 +7,10 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Stream;
 
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.RESOURCE_PATH;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.TEXT_EXERTION;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayStream;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
@@ -20,8 +22,6 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
  */
 public class MyFile extends FileManagement {
 
-    private final String path = "src/com/RenfrewshireSoftFruitsCooperative_Project/resources";
-
     /**
      * This method reads a specified File saved in the resources folder.
      *
@@ -32,7 +32,7 @@ public class MyFile extends FileManagement {
      */
     @Override
     public Stream<String> read(String fileLocation) {
-        Path filePath = Paths.get(path, PathFile.CONSOLE + "/" + fileLocation + TEXT_EXERTION );
+        Path filePath = Paths.get(RESOURCE_PATH, PathFile.CONSOLE + "/" + fileLocation + TEXT_EXERTION );
         try (Stream<String> lines = Files.lines( filePath )) {
 
             displayStream(lines);
@@ -45,6 +45,11 @@ public class MyFile extends FileManagement {
             return null;
         }
 
+    @Override
+    public Data readAll(String folder, List<String> fileNames) {
+        return null;
+    }
+
     /**
      * I don't have a need for creating a File as I am using them only for menus display
      * @param fileLocation
@@ -53,7 +58,7 @@ public class MyFile extends FileManagement {
     @Override
     public boolean write(String fileLocation, Data data) throws IOException {
 
-//        Files.write(Paths.get(path + "/" + PathFile.CONSOLE + "/" + fileLocation + TEXT_EXERTION), "content".getBytes());
+//        Files.write(Paths.get(RESOURCE_PATH + "/" + PathFile.CONSOLE + "/" + fileLocation + TEXT_EXERTION), "content".getBytes());
 
         return false;
     }

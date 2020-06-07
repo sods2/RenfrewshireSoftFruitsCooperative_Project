@@ -2,10 +2,14 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.CreateNewBatch;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.ListAllBatches;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
+
+import java.nio.file.Path;
+import java.util.List;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 
@@ -55,7 +59,7 @@ public class Console {
      * Display Main Menu
      */
     public void displayMainMenu() {
-        fileManagement.read(PathFile.MENU.toString());
+        fileManagement.read(PathFile.MENU_STEP2.toString());
         getCommand();
     }
 
@@ -77,11 +81,15 @@ public class Console {
     /**
      * Create New Branch
      */
-    public void CreateNewBranch() {
+    public void CreateNewBatch() {
         CreateNewBatch createNewBatch = new CreateNewBatch();
         createNewBatch.create(this);
     }
 
+    public void listAll_Batches() {
+        ListAllBatches allBatches = new ListAllBatches();
+        allBatches.listAllBatches();
+    }
 
 
 }

@@ -134,10 +134,10 @@ public class DataInput {
                 break;
 
             case "1": //Create New Branch
-                console.CreateNewBranch();
+                console.CreateNewBatch();
                 break;
             case "2": //List all batches
-
+                console.listAll_Batches();
                 break;
             case "3": //View details of a batch
 

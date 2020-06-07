@@ -10,9 +10,13 @@ public enum PathFile {
     //JSON
     JSON("JSON"),
 
+    //Batch
+    BATCH("Batch"),
+
     //Console
     CONSOLE("Console"),
-    MENU("Menu"),
+    MENU_STEP1("MenuStep1"),
+    MENU_STEP2("MenuStep2"),
     HELPMENU("HelpMenu");
 
     private String pathString;

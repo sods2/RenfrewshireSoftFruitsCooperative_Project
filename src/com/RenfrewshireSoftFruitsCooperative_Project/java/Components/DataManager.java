@@ -1,6 +1,10 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
+import com.google.gson.Gson;
+
+import java.util.*;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
@@ -23,7 +27,33 @@ public class DataManager {
             return data;
 
         } catch (Exception e) {
-            displayString("Error while processing The inserted Data!\n" +
+            displayString("Error while processing the inserted Data!\n" +
+                    "Please try again!");
+        }
+
+        return null;
+    }
+
+    public List<Batch> processBatchData(HashMap<String, Object> map){
+
+        List<Batch> batchList = new ArrayList<>();
+        Batch batch = new Batch();
+        Gson gson = new Gson();
+        String json;
+
+        try {
+
+            //deserialize json
+            for(Map.Entry<String, Object> entry: map.entrySet()) {
+                json = gson.toJson(entry.getValue());
+                batch = gson.fromJson(json, Batch.class);
+                batchList.add(batch);
+            }
+
+            return batchList;
+
+        } catch (Exception e) {
+            displayString("Error while processing the batch Data!\n" +
                     "Please try again!");
         }
 

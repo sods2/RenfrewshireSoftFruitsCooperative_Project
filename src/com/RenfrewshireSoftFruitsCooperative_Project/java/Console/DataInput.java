@@ -8,7 +8,7 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 
 public class DataInput {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner;
 
     /**
      * Getting console input (User input)
@@ -16,7 +16,9 @@ public class DataInput {
      * @return returns input or empty string is no input was passed
      */
     public static String getMenuInput() {
-        String cmd = "";
+        scanner = new Scanner(System.in);
+
+        String cmd;
         int attempt= 0;
 
         try {
@@ -44,13 +46,17 @@ public class DataInput {
         } catch (Exception e) {
             displayString("Error while reading input\n" +
                     "Please try again!");
+        } finally {
+            scanner.close();
         }
 
         return "";
     }
 
     public static String getUserInput() {
-        String cmd = "";
+        scanner = new Scanner(System.in);
+
+        String cmd;
 
         try {
             //using line just for spacing
@@ -61,13 +67,15 @@ public class DataInput {
                 if (cmd.equals("exit")){
                     trafficLight( new Console(), cmd);
                 }
-                    //returning the command
-                    return cmd;
+                //returning the command
+                return cmd;
             }
 
         } catch (Exception e) {
             displayString("Error while reading input\n" +
                     "Please try again!");
+        } finally {
+            scanner.close();
         }
 
         return "";
@@ -94,6 +102,8 @@ public class DataInput {
      * @return true if Enter key is pressed
      */
     public static boolean consoleIdle(){
+        scanner = new Scanner(System.in);
+
         String cmd;
         int i;
 
@@ -122,7 +132,10 @@ public class DataInput {
 
         } catch (Exception e){
             displayString("Application could not go in Idle state!");
+        } finally {
+            scanner.close();
         }
+
         return false;
     }
 
@@ -159,7 +172,8 @@ public class DataInput {
 
     /**
      * This method is used to manage the user interface
-     * @param input input inserted
+     * @param console Console obj
+     * @param input String input
      */
     public static void trafficLight(Console console, String input){//TODO: check possible alternative
         switch (input){

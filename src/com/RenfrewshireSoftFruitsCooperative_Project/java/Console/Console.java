@@ -8,10 +8,8 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.Fi
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 
-import java.nio.file.Path;
-import java.util.List;
-
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 public class Console {
 
@@ -56,6 +54,13 @@ public class Console {
     }
 
     /**
+     * Putting the console in an idle state until the Enter key is pressed
+     */
+    public boolean idle() {
+        return consoleIdle();
+    }
+
+    /**
      * Display Main Menu
      */
     public void displayMainMenu() {
@@ -81,15 +86,33 @@ public class Console {
     /**
      * Create New Branch
      */
-    public void CreateNewBatch() {
+    public boolean CreateNewBatch() {
         CreateNewBatch createNewBatch = new CreateNewBatch();
-        createNewBatch.create(this);
+        return verifyProcess(createNewBatch.create(this));
     }
 
-    public void listAll_Batches() {
+    /**
+     * Displaying all batch's info
+     */
+    public boolean listAll_Batches() {
         ListAllBatches allBatches = new ListAllBatches();
-        allBatches.listAllBatches();
+        return verifyProcess(allBatches.listAllBatches(this));
     }
 
+    /**
+     * Verify that operation ended with true feedback
+     *
+     * Using it just to double check that everything went fine
+     * @param processVerification
+     * @return same value that was initially passed
+     */
+    public boolean verifyProcess(boolean processVerification){
+        if (!processVerification){
+            displayString("Sorry, something went wrong\n" +
+                    "Please try again!");
+            return false;
+        }
+        return true;
+    }
 
 }

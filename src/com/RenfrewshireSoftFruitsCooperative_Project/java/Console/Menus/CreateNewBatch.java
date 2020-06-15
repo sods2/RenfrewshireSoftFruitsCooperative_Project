@@ -32,6 +32,11 @@ public class CreateNewBatch {
     String fruitType = "";
     String weight = "0";
 
+    /**
+     * Creating the Console UI for the Creation of a New Batch
+     * @param console
+     * @return return true if the operation ended successfully
+     */
     public boolean create(Console console){
 
         this.console= console;
@@ -59,7 +64,12 @@ public class CreateNewBatch {
 
             //Go back to main menu
             displayString("");
-            console.displayMainMenu();
+
+            if(!this.console.idle()){
+                return false;
+            }
+
+            return true;
 
         } catch (Exception e) {
             displayString("Error creating the new Batch\n" +
@@ -69,13 +79,17 @@ public class CreateNewBatch {
         return false;
     }
 
-    //Insert Farm Number
+    /**
+     * Inserting Farm Number
+     */
     private void insertFarmN(){
         displayString("    Enter Farm N.   (eg. 001 to 999)");
         while ((farmN = batchManager.checkFarmN(console.getInput())).isEmpty());
     }
 
-    //Insert a fruit type
+    /**
+     * Inserting a fruit type
+     */
     private void insertFruitType(){
         displayString("    Select a fruit type:");
         displayString("        1. Strawberries");
@@ -92,13 +106,18 @@ public class CreateNewBatch {
         }
     }
 
+    /**
+     * inserting batch weight
+     */
     private void insertBatchWeight(){
         displayString("    Enter batch weight in KG’s (N.B. Max weight per batch is 100Kg).");
         //keep asking weight until is write ( > 0 & <= 100 )
         while ((weight = batchManager.checkBatchWeight(console.getInput())).isEmpty());
     }
 
-    //Create File Validation
+    /**
+     * Creating File Validation
+     */
     private void CreateFile_Validation(){
         displayString("    This batch contains " + weight +
                 "KG of " + fruitManager.getFruitNameByCode(fruitType) +

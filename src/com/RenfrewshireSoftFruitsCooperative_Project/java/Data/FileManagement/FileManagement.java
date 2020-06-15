@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.RESOURCE_PATH;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
  * Abstract Class For File Management
@@ -70,7 +71,7 @@ public abstract class FileManagement {
             return fileNames;
 
         } catch (Exception e) {
-            System.out.println("No files found on Path: " + folderPath);
+            displayString("No files found on Path: " + folderPath);
         }
         return null;
     }

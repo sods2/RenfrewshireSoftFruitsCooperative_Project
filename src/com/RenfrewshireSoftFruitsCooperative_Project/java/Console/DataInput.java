@@ -90,6 +90,43 @@ public class DataInput {
     }
 
     /**
+     * Using this method to keep the console in an Idle state
+     * @return true if Enter key is pressed
+     */
+    public static boolean consoleIdle(){
+        String cmd;
+        int i;
+
+        try{
+            //using line just for spacing
+            displayString("");
+            for (i = 0; i >= 0; i++) {
+
+                //read line (this will always be empty at first)
+                cmd = scanner.nextLine();
+
+                //read line is empty then ask again
+                if(cmd.isEmpty()){
+                    displayString("    Press enter to continue!");
+                    cmd = scanner.nextLine();
+                }
+
+                //exit application if exit was typed
+                if (cmd.equals("exit")){
+                    trafficLight( new Console(), cmd);
+                }
+                i=-2;
+            }
+
+            return true;
+
+        } catch (Exception e){
+            displayString("Application could not go in Idle state!");
+        }
+        return false;
+    }
+
+    /**
      * Checking valid attempt number
      * @param attempt attempt number
      * @return true if we reached the maximum number of attempts

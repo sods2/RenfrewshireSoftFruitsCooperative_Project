@@ -5,7 +5,6 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import org.omg.CORBA.DATA_CONVERSION;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -53,7 +52,7 @@ public class MyJSON extends FileManagement {
     }
 
     @Override
-    public Data readAll(String folder, List<String> fileNames) {//TODO: data keeps erasing previous and adding new needs correction (Line 65)
+    public Data readAll(String folder, List<String> fileNames) {
         //instantiating Data
         Data data = new Data();
 
@@ -62,7 +61,7 @@ public class MyJSON extends FileManagement {
             //looping through files
             for (String filename : fileNames){
                 //Getting data from file
-                data = getDataFromFile(folder + "/" + filename);
+                data.getData().putAll(getDataFromFile(folder + "/" + filename).getData());
             }
 
             //returning data obj
@@ -89,11 +88,13 @@ public class MyJSON extends FileManagement {
     @Override
     public boolean write(String filename, Data data) {
 
+        //setting gson builder and formatting it
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try{
             String json;
 
+            //converting to Json if condition is met
             if (null!=data) {
                 json = gson.toJson(data.getData());
             } else {

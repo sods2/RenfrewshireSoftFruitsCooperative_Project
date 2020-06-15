@@ -46,6 +46,8 @@ public class ListAllBatches {
             //getting batches's list
             batchList = dataManager.processBatchData(data);
 
+            //TODO: add headers
+
             //printing all batches' information
             batchList.forEach(e -> displayString(e.getId() + " - " + e.getFruitType() + " - " + e.getFarmN() + " - " + e.getWeight() + "KG" + " - " + e.getReceivedDate()));
 

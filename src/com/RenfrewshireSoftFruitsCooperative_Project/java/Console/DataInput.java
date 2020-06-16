@@ -138,6 +138,25 @@ public class DataInput {
         return attempt >= MAX_INPUT_ATTEMPT;
     }
 
+    /**
+     * Checking if the User input is a number
+     * @param num number inserted by the User
+     * @return the number inserted otherwise gives back an error message
+     */
+    public static String isNumeric(String num) {//TODO: update test
+        try {
+            if(num.matches("-?\\d+(\\.\\d+)?")){
+                if (0<=Integer.parseInt(num)){
+
+                    return num;
+                }
+            }
+        } catch (Exception e) {
+            displayString("Please Enter a number (only digits allowed 1 to 9)");
+            return "";
+        }
+        return "";
+    }
 
     /**
      * Validate if the user wishes to continue or not
@@ -184,7 +203,7 @@ public class DataInput {
 
                 break;
             case "4": //Sort\Grade a batch
-
+                console.grade_Batch();
                 break;
             //EXIT Application
             case "exit": case "5":

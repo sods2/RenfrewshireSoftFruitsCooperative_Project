@@ -33,10 +33,11 @@ public class MyJSON extends FileManagement {
      */
     @Override
     public Data read(String filename) {
-        Data data;
+        Data data = new Data();
+
         try{
 
-            data = getDataFromFile(filename + JSON_EXERTION);
+            data.getData().putAll(getDataFromFile(filename + JSON_EXERTION).getData());
 
             //returning data obj
             return data;

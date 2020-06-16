@@ -11,11 +11,10 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.HashMap;
 
-import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.validation;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
- * I am using this Class to create the Console UI for the Creation of a New Batch
+ * Using this Class to create the Console UI for the Creation of a New Batch
  */
 public class CreateNewBatch {
 
@@ -60,7 +59,7 @@ public class CreateNewBatch {
             insertBatchWeight();
 
             //Check
-            CreateFile_Validation();
+            createFile_Validation();
 
             //Go back to main menu
             displayString("");
@@ -118,15 +117,17 @@ public class CreateNewBatch {
     /**
      * Creating File Validation
      */
-    private void CreateFile_Validation(){
+    private void createFile_Validation(){
         displayString("    This batch contains " + weight +
                 "KG of " + fruitManager.getFruitNameByCode(fruitType) +
                 " From Farm-Number: " + farmN +
                 " received on: " + date);
 
-        if (validation()){
+        if (console.validate_Input()){
             batch = new Batch(Integer.parseInt(weight), farmN, fruitType, new HashMap<>());
+            //formatting data
             data = new DataManager().processData(batch, batch.getId());
+            //writing file
             console.createNewJSON(PathFile.BATCH.toString() + "/" + batch.getId(), data);
         } else {
             displayString("The file was not created!");

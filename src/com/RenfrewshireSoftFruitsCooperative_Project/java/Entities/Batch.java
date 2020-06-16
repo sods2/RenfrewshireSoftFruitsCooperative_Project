@@ -17,7 +17,7 @@ public class Batch {
 
     private String fruitType;
 
-    HashMap<String, Integer> Grades = new HashMap<>();
+    HashMap<String, Integer> grades = new HashMap<>();
 
     public Batch() {}
 
@@ -32,9 +32,27 @@ public class Batch {
         this.weight = weight;
         this.farmN = farmN;
         this.fruitType = fruitType;
-        this.Grades = grades;
+        this.grades = grades;
         setId();
         setReceivedDate();
+    }
+
+    /**
+     * Using this to create a new Batch (For when a copy of existing one is needed)
+     * @param id
+     * @param receivedDate
+     * @param weight
+     * @param farmN
+     * @param fruitType
+     * @param grades
+     */
+    public Batch(String id, String receivedDate, int weight, String farmN, String fruitType, HashMap<String, Integer> grades) {
+        this.id = id;
+        this.receivedDate = receivedDate;
+        this.weight = weight;
+        this.farmN = farmN;
+        this.fruitType = fruitType;
+        this.grades = grades;
     }
 
     public String getId() {
@@ -80,11 +98,11 @@ public class Batch {
     }
 
     public HashMap<String, Integer> getGrades() {
-        return Grades;
+        return grades;
     }
 
     public void setGrades(HashMap<String, Integer> grades) {
-        Grades = grades;
+        grades = grades;
     }
 
 }

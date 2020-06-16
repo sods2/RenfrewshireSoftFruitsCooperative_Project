@@ -14,7 +14,7 @@ import java.util.List;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
- *
+ * Using this Class to create the Console UI for listing all batches
  */
 public class ListAllBatches {
 
@@ -24,32 +24,44 @@ public class ListAllBatches {
 
     private FileManagement fileManagement = new MyJSON();
     DataManager dataManager = new DataManager();
-    private List<String> files;
-    private Data data;
-    private List<Batch> batchList = new ArrayList<>();
 
     /**
      * Displaying list of batches
+     * @param console
+     * @return return true if the operation ended successfully
      */
     public boolean listAllBatches(Console console) {//TODO: once done with grades need to add it to the display
 
         this.console= console;
 
+        List<Batch> batchList = new ArrayList<>();
         try {
 
             //getting list of file names
-            files = fileManagement.getFileList(folder);
+            List<String> files = fileManagement.getFileList(folder);
 
             //getting data from all files
-            data = fileManagement.readAll(folder, files);
+            Data data = fileManagement.readAll(folder, files);
 
             //getting batches's list
-            batchList = dataManager.processBatchData(data);
+            if(null!= data) {
+                batchList = dataManager.processBatchData(data);
+            } else {
+                displayString("No batch data found!");
+            }
 
             displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
 
             //printing all batches' information
-            batchList.forEach(e -> displayString("  " + e.getId() + "    |  " + e.getFruitType() + "  |    " + e.getFarmN() + "    |   " + e.getWeight() + "KG" + "   | " + e.getReceivedDate()));
+            if(null!= batchList){
+                batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
+                                                                + e.getFruitType() + "  |    "
+                                                                + e.getFarmN() + "    |   "
+                                                                + e.getWeight() + "KG" + "   | "
+                                                                + e.getReceivedDate()));
+            } else {
+                displayString("No batch list found!");
+            }
 
             displayString("");
 

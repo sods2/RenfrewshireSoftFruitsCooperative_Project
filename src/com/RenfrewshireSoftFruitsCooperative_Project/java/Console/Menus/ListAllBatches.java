@@ -46,10 +46,10 @@ public class ListAllBatches {
             //getting batches's list
             batchList = dataManager.processBatchData(data);
 
-            //TODO: add headers
+            displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
 
             //printing all batches' information
-            batchList.forEach(e -> displayString(e.getId() + " - " + e.getFruitType() + " - " + e.getFarmN() + " - " + e.getWeight() + "KG" + " - " + e.getReceivedDate()));
+            batchList.forEach(e -> displayString("  " + e.getId() + "    |  " + e.getFruitType() + "  |    " + e.getFarmN() + "    |   " + e.getWeight() + "KG" + "   | " + e.getReceivedDate()));
 
             displayString("");
 

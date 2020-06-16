@@ -46,8 +46,6 @@ public class DataInput {
         } catch (Exception e) {
             displayString("Error while reading input\n" +
                     "Please try again!");
-        } finally {
-            scanner.close();
         }
 
         return "";
@@ -74,8 +72,6 @@ public class DataInput {
         } catch (Exception e) {
             displayString("Error while reading input\n" +
                     "Please try again!");
-        } finally {
-            scanner.close();
         }
 
         return "";
@@ -112,19 +108,14 @@ public class DataInput {
             displayString("");
             for (i = 0; i >= 0; i++) {
 
-                //read line (this will always be empty at first)
+                displayString("    Press enter to continue!");
+
                 cmd = scanner.nextLine();
 
-                //read line is empty then ask again
                 if(cmd.isEmpty()){
-                    displayString("    Press enter to continue!");
-                    cmd = scanner.nextLine();
+                    displayString("");
                 }
 
-                //exit application if exit was typed
-                if (cmd.equals("exit")){
-                    trafficLight( new Console(), cmd);
-                }
                 i=-2;
             }
 
@@ -133,7 +124,6 @@ public class DataInput {
         } catch (Exception e){
             displayString("Application could not go in Idle state!");
         } finally {
-            scanner.close();
         }
 
         return false;

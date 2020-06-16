@@ -78,10 +78,10 @@ public class DataInputTest {
     @Test
     public void consoleIdle() {
         //passing value to System input
-        in_consoleIdle = new ByteArrayInputStream("".getBytes());
+        in_consoleIdle = new ByteArrayInputStream("\r".getBytes());
         System.setIn(in_consoleIdle);
 
-        DataInput.consoleIdle();
+        assertTrue(DataInput.consoleIdle());
     }
 
     @Test

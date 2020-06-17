@@ -3,10 +3,7 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -47,6 +44,8 @@ public class Display {
 
     /**TODO:finish refactoring
      * Display batch info
+     *
+     * Using lambda so that is ready for multiple records
      */
     public static void displayBatchesWithGrades(List<Batch> batchList) {
         BatchManager batchManager = new BatchManager();
@@ -66,7 +65,7 @@ public class Display {
             batchList.forEach(e -> {
                 SortedMap<String, Double> sortedMap = new TreeMap<>(e.getGrades());
                 for(Map.Entry<String, Double> entry : sortedMap.entrySet()) {
-                    displayString("    " + entry.getKey() + "    " + entry.getValue() + " = " + batchManager.calculateKg(entry.getValue()) + "KG");
+                    displayString("    " + entry.getKey() + "    " + entry.getValue() + " = " + batchManager.calculateKg(entry.getValue() , e.getWeight()) + "KG");
                     displayString("");
                 }
             });

@@ -67,9 +67,9 @@ public class BatchManager {
      * Calculating how many kg a percentage represents
      * @return result of percentage to kg
      */
-    public double calculateKg(double percent){//TODO: update test
+    public String calculateKg(double percent, double tot){//TODO: update test
 
-        return percent * 100 / 100;
+        return String.format("%.3f", (tot * (percent / 100)));
     }
 
 }

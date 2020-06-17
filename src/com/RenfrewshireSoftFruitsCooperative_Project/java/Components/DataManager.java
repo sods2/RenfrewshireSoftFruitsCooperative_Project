@@ -44,7 +44,7 @@ public class DataManager {
         try {
 
             //deserialize json
-            for(Map.Entry<String, Object> entry: data.getData().entrySet()) {
+            for(Map.Entry<String, Object> entry : data.getData().entrySet()) {
                 json = gson.toJson(entry.getValue());
                 batch = gson.fromJson(json, Batch.class);
                 batchList.add(batch);

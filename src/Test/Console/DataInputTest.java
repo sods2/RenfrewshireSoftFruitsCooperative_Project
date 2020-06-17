@@ -95,17 +95,6 @@ public class DataInputTest {
     }
 
     @Test
-    public void isNumeric() {
-
-        assertEquals(String.valueOf(1), DataInput.isNumeric("1"));
-        assertEquals(String.valueOf(23), DataInput.isNumeric("23"));
-        assertEquals(String.valueOf(100), DataInput.isNumeric("100"));
-
-        assertEquals("", DataInput.isNumeric("abc"));
-        assertNotSame("a", DataInput.isNumeric("1"));
-    }
-
-    @Test
     public void validation() {
         Console console = new Console();
 

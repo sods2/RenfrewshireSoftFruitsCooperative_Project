@@ -51,4 +51,25 @@ public class BatchManager {
         return "";
     }
 
+    public boolean isGradeValid(String grade){//TODO: update test
+        if (grade.matches("\\d{1,3}[.]\\d{0,2}")) {
+            //Checking value format
+            return true;
+        }
+            else {
+                displayString("Grade format is incorrect!\n" +
+                        "Example (0, 50, 25.5)");
+        }
+        return false;
+    }
+
+    /**
+     * Calculating how many kg a percentage represents
+     * @return result of percentage to kg
+     */
+    public double calculateKg(double percent){//TODO: update test
+
+        return percent * 100 / 100;
+    }
+
 }

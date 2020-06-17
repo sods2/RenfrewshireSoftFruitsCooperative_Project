@@ -6,10 +6,10 @@
     "farmN": "012",
     "fruitType": "BL",
     "grades": {
-      "GRADE C": 40,
-      "GRADE B": 30,
-      "GRADE A": 20,
-      "REJECTED": 10
+      "GRADE C": 10.0,
+      "GRADE B": 24.5,
+      "GRADE A": 15.5,
+      "REJECTED": 50.0
     }
   }
 }

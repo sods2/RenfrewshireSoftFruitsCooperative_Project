@@ -11,7 +11,7 @@ public class DataInput {
     private static Scanner scanner;
 
     /**
-     * Getting console input (User input)
+     * Getting console input (User input) used for menu
      *
      * @return returns input or empty string is no input was passed
      */
@@ -51,6 +51,10 @@ public class DataInput {
         return "";
     }
 
+    /**
+     * Getting console input (User input) used for gathering data
+     * @return returns input or empty string is no input was passed
+     */
     public static String getUserInput() {
         scanner = new Scanner(System.in);
 
@@ -65,6 +69,33 @@ public class DataInput {
                 if (cmd.equals("exit")){
                     trafficLight( new Console(), cmd);
                 }
+                //returning the command
+                return cmd;
+            }
+
+        } catch (Exception e) {
+            displayString("Error while reading input\n" +
+                    "Please try again!");
+        }
+
+        return "";
+    }
+
+    /**
+     * Getting console input (User input) used for gathering data
+     * @return returns input or empty string is no input was passed
+     */
+    public static String getUserInput_Double() {
+        scanner = new Scanner(System.in);
+
+        String cmd;
+
+        try {
+            //using line just for spacing
+            displayString("");
+            //Getting input value while the field is left empty
+            while (!(cmd = String.valueOf(scanner.nextDouble())).isEmpty()){
+
                 //returning the command
                 return cmd;
             }
@@ -136,26 +167,6 @@ public class DataInput {
      */
     public static boolean checkAttemptN(int attempt) {
         return attempt >= MAX_INPUT_ATTEMPT;
-    }
-
-    /**
-     * Checking if the User input is a number
-     * @param num number inserted by the User
-     * @return the number inserted otherwise gives back an error message
-     */
-    public static String isNumeric(String num) {//TODO: update test
-        try {
-            if(num.matches("-?\\d+(\\.\\d+)?")){
-                if (0<=Integer.parseInt(num)){
-
-                    return num;
-                }
-            }
-        } catch (Exception e) {
-            displayString("Please Enter a number (only digits allowed 1 to 9)");
-            return "";
-        }
-        return "";
     }
 
     /**

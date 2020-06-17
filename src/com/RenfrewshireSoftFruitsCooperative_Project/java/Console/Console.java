@@ -39,7 +39,7 @@ public class Console {
     }
 
     /**
-     * Getting Command from user
+     * Getting Command from user (generic String)
      */
     public String getCommand() {
         String input = getMenuInput();
@@ -48,10 +48,18 @@ public class Console {
     }
 
     /**
-     * Getting Command from user
+     * Getting Command from user (generic String)
      */
     public String getInput() {
         String input = getUserInput();
+        return input;
+    }
+
+    /**
+     * Getting Command from user (Double)
+     */
+    public String getInput_Double() {
+        String input = getUserInput_Double();
         return input;
     }
 

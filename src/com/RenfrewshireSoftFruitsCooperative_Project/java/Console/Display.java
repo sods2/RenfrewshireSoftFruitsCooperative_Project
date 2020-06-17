@@ -1,9 +1,12 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
 /**
@@ -42,21 +45,36 @@ public class Display {
         }
     }
 
-//    /**//TODO:finish refactoring
-//     * Display batch info
-//     */
-//    private void displayBatch(List<Batch> batchList, Batch batch) {
-//        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
-//
-//        if(null!= batchList){
-//            batchList.forEach(e -> displayString("  " + (id = e.getId()) + "    |  "
-//                    + (fruitType = e.getFruitType()) + "  |    "
-//                    + (farmN = e.getFarmN()) + "    |   "
-//                    + (weight = e.getWeight()) + "KG" + "   | "
-//                    + (receivedDate = e.getReceivedDate())));
-//        } else {
-//            displayString("No batch found with ID: " + filename);
-//        }
-//    }
+    /**TODO:finish refactoring
+     * Display batch info
+     */
+    public static void displayBatchesWithGrades(List<Batch> batchList) {
+        BatchManager batchManager = new BatchManager();
+
+        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+
+        if(null!= batchList){
+            //Display Batch's info
+            batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
+                    + e.getFruitType() + "  |    "
+                    + e.getFarmN() + "    |   "
+                    + e.getWeight() + "KG" + "   | "
+                    + e.getReceivedDate() + "\n    "
+            ));
+
+            //Display Batch's Grades
+            batchList.forEach(e -> {
+                SortedMap<String, Double> sortedMap = new TreeMap<>(e.getGrades());
+                for(Map.Entry<String, Double> entry : sortedMap.entrySet()) {
+                    displayString("    " + entry.getKey() + "    " + entry.getValue() + " = " + batchManager.calculateKg(entry.getValue()) + "KG");
+                    displayString("");
+                }
+            });
+
+            displayString("");
+        } else {
+            displayString("No batch found" );
+        }
+    }
 
 }

@@ -17,7 +17,7 @@ public class Batch {
 
     private String fruitType;
 
-    HashMap<String, Integer> grades = new HashMap<>();
+    HashMap<String, Double> grades = new HashMap<>();
 
     public Batch() {}
 
@@ -28,7 +28,7 @@ public class Batch {
      * @param fruitType
      * @param grades
      */
-    public Batch(int weight, String farmN, String fruitType, HashMap<String, Integer> grades) {
+    public Batch(int weight, String farmN, String fruitType, HashMap<String, Double> grades) {
         this.weight = weight;
         this.farmN = farmN;
         this.fruitType = fruitType;
@@ -46,7 +46,7 @@ public class Batch {
      * @param fruitType
      * @param grades
      */
-    public Batch(String id, String receivedDate, int weight, String farmN, String fruitType, HashMap<String, Integer> grades) {
+    public Batch(String id, String receivedDate, int weight, String farmN, String fruitType, HashMap<String, Double> grades) {
         this.id = id;
         this.receivedDate = receivedDate;
         this.weight = weight;
@@ -97,11 +97,11 @@ public class Batch {
         this.fruitType = fruitType;
     }
 
-    public HashMap<String, Integer> getGrades() {
+    public HashMap<String, Double> getGrades() {
         return grades;
     }
 
-    public void setGrades(HashMap<String, Integer> grades) {
+    public void setGrades(HashMap<String, Double> grades) {
         grades = grades;
     }
 

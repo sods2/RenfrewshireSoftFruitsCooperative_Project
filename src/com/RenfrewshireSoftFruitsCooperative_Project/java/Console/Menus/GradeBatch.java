@@ -2,6 +2,7 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.FruitGrade;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
@@ -13,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.isNumeric;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
@@ -28,10 +28,10 @@ public class GradeBatch {
 
     private FileManagement fileManagement = new MyJSON();
     DataManager dataManager = new DataManager();
+    BatchManager batchManager = new BatchManager();
 
     Data data;
     Batch batch;
-    Batch batchDetails;
     List<Batch> batchList = new ArrayList<>();
 
     //Storing batch information
@@ -40,16 +40,16 @@ public class GradeBatch {
     private int weight;
     private String farmN;
     private String fruitType;
-    HashMap<String, Integer> grades = new HashMap<>();
+    HashMap<String, Double> grades = new HashMap<>();
 
-    String grade;
+    double grade;
 
     /**
      * Grading a specified batch
      * @param console
      * @return return true if the operation ended successfully
      */
-    public boolean gradeBatch(Console console) {
+    public boolean gradeBatch(Console console) {//TODO solve batch not found error when ID is incorrect
 
         this.console= console;
 
@@ -118,7 +118,7 @@ public class GradeBatch {
 
         if (0!=grades.size()){
             //getting sum
-            int grade = grades.values().stream().mapToInt(g -> g).sum();
+            double grade = grades.values().stream().mapToDouble(g -> g).sum();
 
             if (grade != 100) {
                 displayString("Grades' total must be 100%!\n" +
@@ -170,34 +170,43 @@ public class GradeBatch {
 
         displayString("     Enter percentage of GRADE A Fruit in batch:");
 
-        while((grade = isNumeric(this.console.getInput())).isEmpty()){
-            displayString(errMessage);
-        }
-        grades.put(FruitGrade.GRADE_A.toString() , Integer.parseInt(grade));
+        while(!getGrade());
+        grades.put(FruitGrade.GRADE_A.toString() , grade);
 
         displayString("");
         displayString("     Enter percentage of GRADE B Fruit in batch:");
 
-        while((grade = isNumeric(this.console.getInput())).isEmpty()){
-            displayString(errMessage);
-        }
-        grades.put(FruitGrade.GRADE_B.toString() , Integer.parseInt(grade));
+        while(!getGrade());
+        grades.put(FruitGrade.GRADE_B.toString() , grade);
 
         displayString("");
         displayString("     Enter percentage of GRADE C Fruit in batch:");
 
-        while((grade = isNumeric(this.console.getInput())).isEmpty()){
-            displayString(errMessage);
-        }
-        grades.put(FruitGrade.GRADE_C.toString() , Integer.parseInt(grade));
+        while(!getGrade());
+        grades.put(FruitGrade.GRADE_C.toString() , grade);
 
         displayString("");
         displayString("     Enter percentage of REJECTED Fruit in batch:");
 
-        while((grade = isNumeric(this.console.getInput())).isEmpty()){
-            displayString(errMessage);
+        while(!getGrade());
+        grades.put(FruitGrade.REJECTED.toString() , grade);
+    }
+
+    /**
+     * Getting grade
+     * @return true if grade value is valid
+     */
+    private boolean getGrade(){
+        try {
+
+            return batchManager.isGradeValid(String.valueOf(grade = Double.parseDouble(this.console.getInput_Double())));
+
+        } catch (Exception e){
+            displayString("Grade format is incorrect!\n" +
+                    "Example (0 or 50 or 25,5)");
+            return false;
         }
-        grades.put(FruitGrade.REJECTED.toString() , Integer.parseInt(grade));
+
     }
 
 }

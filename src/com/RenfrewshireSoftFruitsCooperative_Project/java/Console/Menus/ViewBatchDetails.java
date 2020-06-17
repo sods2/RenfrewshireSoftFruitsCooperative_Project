@@ -8,10 +8,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.Fi
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.*;
 
 /**
  * Using this Class to display, to the Console UI, details about a specified batch
@@ -45,7 +44,7 @@ public class ViewBatchDetails {
 
             //printing batch's information
             displayString("");
-            displayBatch();
+            displayBatchesWithGrades(batchList);
 
             displayString("");
 
@@ -71,26 +70,6 @@ public class ViewBatchDetails {
             batchList = dataManager.processBatchData(data);
         } else {
             displayString("No batch data found!");
-        }
-    }
-
-    /**
-     * Display batch info
-     */
-    private void displayBatch() {
-        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
-
-        if(null!= batchList){
-            batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
-                    + e.getFruitType() + "  |    "
-                    + e.getFarmN() + "    |   "
-                    + e.getWeight() + "KG" + "   | "
-                    + e.getReceivedDate() + "\n    "
-
-                    + e.getGrades()
-            ));
-        } else {
-            displayString("No batch found with ID: " + filename);
         }
     }
 

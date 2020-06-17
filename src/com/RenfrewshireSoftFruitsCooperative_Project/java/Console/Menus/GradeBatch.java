@@ -24,12 +24,14 @@ public class GradeBatch {
     Console console;
 
     private final String folder = PathFile.BATCH.toString();
+    String filename;
 
     private FileManagement fileManagement = new MyJSON();
     DataManager dataManager = new DataManager();
 
     Data data;
     Batch batch;
+    List<Batch> batchList = new ArrayList<>();
 
     //Storing batch information
     private String id;
@@ -38,6 +40,8 @@ public class GradeBatch {
     private String farmN;
     private String fruitType;
     HashMap<String, Integer> grades = new HashMap<>();
+
+    String grade;
 
     /**
      * Grading a specified batch
@@ -48,71 +52,26 @@ public class GradeBatch {
 
         this.console= console;
 
-        List<Batch> batchList = new ArrayList<>();
-
-        String grade;
-
         try{
 
-            displayString("Please enter Batch number:");
+            displayString("     Please enter Batch number:");
 
-            String filename = this.console.getInput();
+            filename = this.console.getInput();
 
             //Getting batch object
-            data = (Data) fileManagement.read(folder + "/" + filename);
-
-            if(null!=data){
-                batchList = dataManager.processBatchData(data);
-            } else {
-                displayString("No batch data found!");
-            }
+            getBatchObj();
 
             //printing batch's information
             displayString("");
-            displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+            displayBatch();
 
-            if(null!= batchList){
-                batchList.forEach(e -> displayString("  " + (id = e.getId()) + "    |  "
-                        + (fruitType = e.getFruitType()) + "  |    "
-                        + (farmN = e.getFarmN()) + "    |   "
-                        + (weight = e.getWeight()) + "KG" + "   | "
-                        + (receivedDate = e.getReceivedDate())));
-            } else {
-                displayString("No batch found with ID: " + filename);
-            }
-
-            //Asking for grades
+            //Grading Batch
             displayString("");
-            displayString("Enter percentage of GRADE A Fruit in batch:");
-
-            while((grade = isNumeric(this.console.getInput())).isEmpty()){
-                displayString("Please Enter a number (only digits allowed 1 to 9)");
+            //Checking that grades add up to 100
+            while(!gradeVerification()){
+                //Asking for grades
+                getBatchGrades();
             }
-            grades.put(FruitGrade.GRADE_A.toString() , Integer.parseInt(grade));
-
-            displayString("");
-            displayString("Enter percentage of GRADE B Fruit in batch:");
-
-            while((grade = isNumeric(this.console.getInput())).isEmpty()){
-                displayString("Please Enter a number (only digits allowed 1 to 9)");
-            }
-            grades.put(FruitGrade.GRADE_B.toString() , Integer.parseInt(grade));
-
-            displayString("");
-            displayString("Enter percentage of GRADE C Fruit in batch:");
-
-            while((grade = isNumeric(this.console.getInput())).isEmpty()){
-                displayString("Please Enter a number (only digits allowed 1 to 9)");
-            }
-            grades.put(FruitGrade.GRADE_C.toString() , Integer.parseInt(grade));
-
-            displayString("");
-            displayString("Enter percentage of REJECTED Fruit in batch:");
-
-            while((grade = isNumeric(this.console.getInput())).isEmpty()){
-                displayString("Please Enter a number (only digits allowed 1 to 9)");
-            }
-            grades.put(FruitGrade.REJECTED.toString() , Integer.parseInt(grade));
 
             //Saving changes into file
             createFile_Validation();
@@ -148,4 +107,95 @@ public class GradeBatch {
             displayString("The file was not created!");
         }
     }
+
+    /**
+     *  Checking Grades' sum
+     * @return return true if sum is equal to 100
+     */
+    private boolean gradeVerification(){
+
+        if (0!=grades.size()){
+            //getting sum
+            int grade = grades.values().stream().mapToInt(g -> g).sum();
+
+            if (grade != 100) {
+                displayString("Grades' total must be 100%!\n" +
+                        grade + "% was entered.\n");
+            }
+
+            //verify sum adds up to 100
+            return grade == 100;
+        }
+
+        return false;
+    }
+
+    /**
+     * Getting batch Obj
+     */
+    private void getBatchObj() {
+        data = (Data) fileManagement.read(folder + "/" + filename);
+
+        if(null!=data){
+            batchList = dataManager.processBatchData(data);
+        } else {
+            displayString("No batch data found!");
+        }
+    }
+
+    /**
+     * Display batch info
+     */
+    private void displayBatch() {
+        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+
+        if(null!= batchList){
+            batchList.forEach(e -> displayString("  " + (id = e.getId()) + "    |  "
+                    + (fruitType = e.getFruitType()) + "  |    "
+                    + (farmN = e.getFarmN()) + "    |   "
+                    + (weight = e.getWeight()) + "KG" + "   | "
+                    + (receivedDate = e.getReceivedDate())));
+        } else {
+            displayString("No batch found with ID: " + filename);
+        }
+    }
+
+    /**
+     * Getting all grades for batch
+     */
+    private void getBatchGrades(){
+        String errMessage = "     Please Enter a number (only digits allowed 0 to 9)";
+
+        displayString("     Enter percentage of GRADE A Fruit in batch:");
+
+        while((grade = isNumeric(this.console.getInput())).isEmpty()){
+            displayString(errMessage);
+        }
+        grades.put(FruitGrade.GRADE_A.toString() , Integer.parseInt(grade));
+
+        displayString("");
+        displayString("     Enter percentage of GRADE B Fruit in batch:");
+
+        while((grade = isNumeric(this.console.getInput())).isEmpty()){
+            displayString(errMessage);
+        }
+        grades.put(FruitGrade.GRADE_B.toString() , Integer.parseInt(grade));
+
+        displayString("");
+        displayString("     Enter percentage of GRADE C Fruit in batch:");
+
+        while((grade = isNumeric(this.console.getInput())).isEmpty()){
+            displayString(errMessage);
+        }
+        grades.put(FruitGrade.GRADE_C.toString() , Integer.parseInt(grade));
+
+        displayString("");
+        displayString("     Enter percentage of REJECTED Fruit in batch:");
+
+        while((grade = isNumeric(this.console.getInput())).isEmpty()){
+            displayString(errMessage);
+        }
+        grades.put(FruitGrade.REJECTED.toString() , Integer.parseInt(grade));
+    }
+
 }

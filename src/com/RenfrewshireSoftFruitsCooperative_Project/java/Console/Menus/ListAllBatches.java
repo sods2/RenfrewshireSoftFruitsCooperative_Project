@@ -25,16 +25,17 @@ public class ListAllBatches {
     private FileManagement fileManagement = new MyJSON();
     DataManager dataManager = new DataManager();
 
+    List<Batch> batchList = new ArrayList<>();
+
     /**
      * Displaying list of batches
      * @param console
      * @return return true if the operation ended successfully
      */
-    public boolean listAllBatches(Console console) {//TODO: once done with grades need to add it to the display
+    public boolean listAllBatches(Console console) {
 
         this.console= console;
 
-        List<Batch> batchList = new ArrayList<>();
         try {
 
             //getting list of file names
@@ -43,25 +44,15 @@ public class ListAllBatches {
             //getting data from all files
             Data data = fileManagement.readAll(folder, files);
 
-            //getting batches's list
+            //getting batches' list
             if(null!= data) {
                 batchList = dataManager.processBatchData(data);
             } else {
                 displayString("No batch data found!");
             }
 
-            displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
-
-            //printing all batches' information
-            if(null!= batchList){
-                batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
-                                                                + e.getFruitType() + "  |    "
-                                                                + e.getFarmN() + "    |   "
-                                                                + e.getWeight() + "KG" + "   | "
-                                                                + e.getReceivedDate()));
-            } else {
-                displayString("No batch list found!");
-            }
+            //Displaying batches' info
+            displayBatches();
 
             displayString("");
 
@@ -77,6 +68,24 @@ public class ListAllBatches {
         }
 
         return false;
+    }
+
+    /**
+     * Displaying batches' info
+     */
+    private void displayBatches(){
+        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+
+        //printing all batches' information
+        if(null!= batchList){
+            batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
+                    + e.getFruitType() + "  |    "
+                    + e.getFarmN() + "    |   "
+                    + e.getWeight() + "KG" + "   | "
+                    + e.getReceivedDate()));
+        } else {
+            displayString("No batch list found!");
+        }
     }
 
 }

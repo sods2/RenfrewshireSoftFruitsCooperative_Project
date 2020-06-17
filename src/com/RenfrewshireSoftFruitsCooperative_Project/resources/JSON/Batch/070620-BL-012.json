@@ -5,6 +5,11 @@
     "weight": 25,
     "farmN": "012",
     "fruitType": "BL",
-    "Grades": {}
+    "grades": {
+      "GRADE C": 40,
+      "GRADE B": 30,
+      "GRADE A": 20,
+      "REJECTED": 10
+    }
   }
 }

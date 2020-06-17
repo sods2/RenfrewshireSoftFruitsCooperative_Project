@@ -207,6 +207,7 @@ public class DataInput {
                 break;
             //EXIT Application
             case "exit": case "5":
+                displayString("Goodbye");
                 console.exit();
             default://Should never be called
 //                console.displayMainMenu();

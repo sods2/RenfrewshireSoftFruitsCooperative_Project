@@ -186,6 +186,11 @@ public class DataInput {
      */
     public static void trafficLight(Console console, String input){//TODO: check possible alternative
         switch (input){
+            //EXIT Application
+            case "exit": case "5":
+                displayString("Goodbye");
+                console.exit();
+
             case "help": //Get Help Menu
                 console.displayMainMenu();
                 break;
@@ -200,15 +205,12 @@ public class DataInput {
                 console.listAll_Batches();
                 break;
             case "3": //View details of a batch
-
+                console.view_BatchDetails();
                 break;
             case "4": //Sort\Grade a batch
                 console.grade_Batch();
                 break;
-            //EXIT Application
-            case "exit": case "5":
-                displayString("Goodbye");
-                console.exit();
+
             default://Should never be called
 //                console.displayMainMenu();
         }

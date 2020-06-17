@@ -4,6 +4,7 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.CreateNewBatch;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.GradeBatch;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.ListAllBatches;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.ViewBatchDetails;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
@@ -101,11 +102,19 @@ public class Console {
     }
 
     /**
-     * Displaying all batch's info
+     * Displaying all batches's info
      */
     public boolean grade_Batch() {
         GradeBatch gradeBatch = new GradeBatch();
         return verifyProcess(gradeBatch.gradeBatch(this));
+    }
+
+    /**
+     * Displaying specified batch's info
+     */
+    public boolean view_BatchDetails() {
+        ViewBatchDetails viewBatchDetails = new ViewBatchDetails();
+        return verifyProcess(viewBatchDetails.displayBatchDetails(this));
     }
 
     /**

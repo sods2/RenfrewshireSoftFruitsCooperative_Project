@@ -31,6 +31,7 @@ public class GradeBatch {
 
     Data data;
     Batch batch;
+    Batch batchDetails;
     List<Batch> batchList = new ArrayList<>();
 
     //Storing batch information
@@ -56,6 +57,7 @@ public class GradeBatch {
 
             displayString("     Please enter Batch number:");
 
+            //getting batch ID
             filename = this.console.getInput();
 
             //Getting batch object
@@ -104,7 +106,7 @@ public class GradeBatch {
             //writing file
             console.createNewJSON(PathFile.BATCH.toString() + "/" + batch.getId(), data);
         } else {
-            displayString("The file was not created!");
+            displayString("The file was not created!");//TODO: this line belongs to validation
         }
     }
 
@@ -112,7 +114,7 @@ public class GradeBatch {
      *  Checking Grades' sum
      * @return return true if sum is equal to 100
      */
-    private boolean gradeVerification(){
+    private boolean gradeVerification(){//TODO: goes away to BatchManager
 
         if (0!=grades.size()){
             //getting sum
@@ -133,7 +135,7 @@ public class GradeBatch {
     /**
      * Getting batch Obj
      */
-    private void getBatchObj() {
+    private void getBatchObj() {//TODO: goes away to DataManager
         data = (Data) fileManagement.read(folder + "/" + filename);
 
         if(null!=data){
@@ -146,7 +148,7 @@ public class GradeBatch {
     /**
      * Display batch info
      */
-    private void displayBatch() {
+    private void displayBatch() {//TODO: goes away to Display
         displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
 
         if(null!= batchList){

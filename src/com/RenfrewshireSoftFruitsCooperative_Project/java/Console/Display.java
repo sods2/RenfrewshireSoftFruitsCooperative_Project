@@ -1,5 +1,9 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
+
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -37,5 +41,22 @@ public class Display {
             displayString("Data not Found!");
         }
     }
+
+//    /**//TODO:finish refactoring
+//     * Display batch info
+//     */
+//    private void displayBatch(List<Batch> batchList, Batch batch) {
+//        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+//
+//        if(null!= batchList){
+//            batchList.forEach(e -> displayString("  " + (id = e.getId()) + "    |  "
+//                    + (fruitType = e.getFruitType()) + "  |    "
+//                    + (farmN = e.getFarmN()) + "    |   "
+//                    + (weight = e.getWeight()) + "KG" + "   | "
+//                    + (receivedDate = e.getReceivedDate())));
+//        } else {
+//            displayString("No batch found with ID: " + filename);
+//        }
+//    }
 
 }

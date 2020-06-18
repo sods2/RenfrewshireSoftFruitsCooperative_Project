@@ -6,8 +6,6 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManage
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.ArrayList;
@@ -26,11 +24,8 @@ public class GradeBatch {
     private final String folder = PathFile.BATCH.toString();
     String filename;
 
-    private FileManagement fileManagement = new MyJSON();
-    DataManager dataManager = new DataManager();
     BatchManager batchManager = new BatchManager();
 
-    Data data;
     Batch batch;
     List<Batch> batchList = new ArrayList<>();
 
@@ -49,7 +44,7 @@ public class GradeBatch {
      * @param console
      * @return return true if the operation ended successfully
      */
-    public boolean gradeBatch(Console console) {//TODO solve batch not found error when ID is incorrect
+    public boolean gradeBatch(Console console) {
 
         this.console= console;
 
@@ -61,7 +56,7 @@ public class GradeBatch {
             filename = this.console.getInput();
 
             //Getting batch object
-            getBatchObj();
+            batchList = batchManager.getBatchObj(folder, filename);
 
             //printing batch's information
             displayString("");
@@ -70,7 +65,10 @@ public class GradeBatch {
             //Grading Batch
             displayString("");
             //Checking that grades add up to 100
-            while(!gradeVerification()){
+            while(!batchManager.gradeVerification(grades)){
+                if(!this.console.idle()){
+                    return false;
+                }
                 //Asking for grades
                 getBatchGrades();
             }
@@ -86,8 +84,7 @@ public class GradeBatch {
 
             return true;
         } catch (Exception e){
-            displayString("Error while grading batch\n" +
-                    "Please try again!");
+            displayString("Error while grading batch\n");
         }
 
         return false;
@@ -102,53 +99,18 @@ public class GradeBatch {
             //Creating a batch with new grades information
             batch = new Batch(id, receivedDate, weight, farmN, fruitType, grades);
             //formatting data
-            data = new DataManager().processData(batch, batch.getId());
+            Data data = new DataManager().processData(batch, batch.getId());
             //writing file
             console.createNewJSON(PathFile.BATCH.toString() + "/" + batch.getId(), data);
         } else {
-            displayString("The file was not created!");//TODO: this line belongs to validation
-        }
-    }
-
-    /**
-     *  Checking Grades' sum
-     * @return return true if sum is equal to 100
-     */
-    private boolean gradeVerification(){//TODO: goes away to BatchManager
-
-        if (0!=grades.size()){
-            //getting sum
-            double grade = grades.values().stream().mapToDouble(g -> g).sum();
-
-            if (grade != 100) {
-                displayString("Grades' total must be 100%!\n" +
-                        grade + "% was entered.\n");
-            }
-
-            //verify sum adds up to 100
-            return grade == 100;
-        }
-
-        return false;
-    }
-
-    /**
-     * Getting batch Obj
-     */
-    private void getBatchObj() {//TODO: goes away to DataManager
-        data = (Data) fileManagement.read(folder + "/" + filename);
-
-        if(null!=data){
-            batchList = dataManager.processBatchData(data);
-        } else {
-            displayString("No batch data found!");
+            displayString("The file was not created!");
         }
     }
 
     /**
      * Display batch info
      */
-    private void displayBatch() {//TODO: goes away to Display
+    private void displayBatch() {
         displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
 
         if(null!= batchList){
@@ -206,7 +168,6 @@ public class GradeBatch {
                     "Example (0 or 50 or 25,5)");
             return false;
         }
-
     }
 
 }

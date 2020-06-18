@@ -139,9 +139,14 @@ public class DataInput {
             displayString("");
             for (i = 0; i >= 0; i++) {
 
-                displayString("    Press enter to continue!");
+                displayString("    Press enter to continue!\n" +
+                        "    Or type 'exit' to quit the program");
 
                 cmd = scanner.nextLine();
+
+                if (cmd.equals("exit")){
+                    trafficLight( new Console(), cmd);
+                }
 
                 if(cmd.isEmpty()){
                     displayString("");

@@ -42,10 +42,8 @@ public class Display {
         }
     }
 
-    /**TODO:finish refactoring
+    /**
      * Display batch info
-     *
-     * Using lambda so that is ready for multiple records
      */
     public static void displayBatchesWithGrades(List<Batch> batchList) {
         BatchManager batchManager = new BatchManager();

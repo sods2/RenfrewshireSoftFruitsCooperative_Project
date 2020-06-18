@@ -1,5 +1,13 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
+
+import java.util.HashMap;
+import java.util.List;
+
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 /**
@@ -72,4 +80,45 @@ public class BatchManager {
         return String.format("%.3f", (tot * (percent / 100)));
     }
 
+    /**
+     *  Checking Grades' sum
+     * @return return true if sum is equal to 100
+     */
+    public boolean gradeVerification(HashMap<String, Double> grades){//TODO: update test
+
+        if (0!=grades.size()){
+            //getting sum
+            double grade = grades.values().stream().mapToDouble(g -> g).sum();
+
+            if (grade != 100) {
+                displayString("Grades' total must be 100%!\n" +
+                        grade + "% was entered.\n");
+            }
+
+            //verify sum adds up to 100
+            return grade == 100;
+        }
+
+        return false;
+    }
+
+    /**
+     * Getting batch Obj
+     * @return batchList
+     */
+    public List<Batch> getBatchObj(String folder, String filename) {//TODO: update test
+        FileManagement fileManagement = new MyJSON();
+        DataManager dataManager = new DataManager();
+        List<Batch> batchList;
+
+        Data data = (Data) fileManagement.read(folder + "/" + filename);
+
+        if(null!=data.getData()){
+            batchList = dataManager.processBatchData(data);
+            return batchList;
+        } else {
+            displayString("No batch data found!");
+        }
+        return null;
+    }
 }

@@ -1,0 +1,15 @@
+{
+  "030620-BL-001": {
+    "id": "030620-BL-001",
+    "receivedDate": "03 06 2020",
+    "weight": 23,
+    "farmN": "001",
+    "fruitType": "BL",
+    "grades": {
+      "GRADE C": 40.0,
+      "GRADE B": 30.0,
+      "GRADE A": 20.0,
+      "REJECTED": 10.0
+    }
+  }
+}

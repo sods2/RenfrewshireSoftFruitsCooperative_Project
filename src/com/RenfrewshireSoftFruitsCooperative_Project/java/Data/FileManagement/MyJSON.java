@@ -43,9 +43,9 @@ public class MyJSON extends FileManagement {
             return data;
 
         } catch (FileNotFoundException e) {
-            displayString("Could not read File! \nTry restarting Application.");
+            displayString("Could not read File! \n");
         } catch (NullPointerException e) {
-            displayString("File not Found! \nTry restarting Application.");
+            displayString("File not Found! \n");
         }
 
         return null;

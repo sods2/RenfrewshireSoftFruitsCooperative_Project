@@ -130,7 +130,7 @@ public class CreateNewBatch {
             //writing file
             console.createNewJSON(PathFile.BATCH.toString() + "/" + batch.getId(), data);
         } else {
-            displayString("The file was not created!");//TODO: this line belongs to validation
+            displayString("The file was not created!");
         }
     }
 

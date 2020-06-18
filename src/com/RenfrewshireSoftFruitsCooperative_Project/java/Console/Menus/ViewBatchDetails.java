@@ -1,11 +1,9 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.*;
@@ -22,10 +20,8 @@ public class ViewBatchDetails {
     private final String folder = PathFile.BATCH.toString();
     String filename;
 
-    private FileManagement fileManagement = new MyJSON();
-    DataManager dataManager = new DataManager();
+    BatchManager batchManager = new BatchManager();
 
-    Data data;
     List<Batch> batchList = new ArrayList<>();
 
     public boolean displayBatchDetails(Console console){
@@ -40,7 +36,7 @@ public class ViewBatchDetails {
             filename = this.console.getInput();
 
             //Getting batch object
-            getBatchObj();
+            batchList = batchManager.getBatchObj(folder, filename);
 
             //printing batch's information
             displayString("");
@@ -54,23 +50,9 @@ public class ViewBatchDetails {
 
             return true;
         } catch (Exception e){
-            displayString("Error while grading batch\n" +
-                    "Please try again!");
+            displayString("Error while trying to display batch Details\n");
         }
         return false;
-    }
-
-    /**
-     * Getting batch Obj
-     */
-    private void getBatchObj() {
-        data = (Data) fileManagement.read(folder + "/" + filename);
-
-        if(null!=data){
-            batchList = dataManager.processBatchData(data);
-        } else {
-            displayString("No batch data found!");
-        }
     }
 
 }

@@ -60,4 +60,30 @@ public class DataManager {
         return null;
     }
 
+    public List<Batch> processPricingData(Data data){//TODO: need to do this
+
+        List<Batch> batchList = new ArrayList<>();
+        Batch batch;
+        Gson gson = new Gson();
+        String json;
+
+        try {
+
+            //deserialize json
+            for(Map.Entry<String, Object> entry : data.getData().entrySet()) {//TODO: I will probably need two add another loop inside to convert the price.class from the list
+                json = gson.toJson(entry.getValue());
+                batch = gson.fromJson(json, Batch.class);
+                batchList.add(batch);
+            }
+
+            return batchList;
+
+        } catch (Exception e) {
+            displayString("Error while processing the batch Data!\n" +
+                    "Please try again!");
+        }
+
+        return null;
+    }
+
 }

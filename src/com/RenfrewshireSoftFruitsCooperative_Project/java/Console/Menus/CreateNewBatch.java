@@ -89,7 +89,7 @@ public class CreateNewBatch {
     /**
      * Inserting a fruit type
      */
-    private void insertFruitType(){
+    private void insertFruitType(){//TODO: update to use txt file menu & move rest into FruitManager
         displayString("    Select a fruit type:");
         displayString("        1. Strawberries");
         displayString("        2. Raspberries");

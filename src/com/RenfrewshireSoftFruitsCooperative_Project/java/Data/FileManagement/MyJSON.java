@@ -28,7 +28,7 @@ public class MyJSON extends FileManagement {
      *
      * Documentation can be found on Google gson github repository at https://github.com/google/gson (visited may-2020)
      *
-     * @param filename
+     * @param filename this contains the folder name and the file name (no extension needed) - base folder JSON/
      * @return String of values taken for JSON File.
      */
     @Override
@@ -52,6 +52,12 @@ public class MyJSON extends FileManagement {
 
     }
 
+    /**
+     * read all specified files contained in specified folder
+     * @param folder
+     * @param fileNames
+     * @return Data for all the files
+     */
     @Override
     public Data readAll(String folder, List<String> fileNames) {
         //instantiating Data
@@ -142,6 +148,12 @@ public class MyJSON extends FileManagement {
         return false;
     }
 
+    /**
+     * Get data from File
+     * @param fileName this contains the folder name and the file name (no extension needed) - base folder JSON/
+     * @return Data retrieved from specified file
+     * @throws FileNotFoundException
+     */
     private Data getDataFromFile(String fileName) throws FileNotFoundException {
         //instantiating Data & Gson
         Data data = new Data();

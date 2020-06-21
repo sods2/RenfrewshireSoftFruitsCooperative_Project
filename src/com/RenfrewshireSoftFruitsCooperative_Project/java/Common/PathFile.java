@@ -13,10 +13,15 @@ public enum PathFile {
     //Batch
     BATCH("Batch"),
 
+    //Pricing
+    PRICING("Pricing"),
+    PRICING_FILE("Pricing_"),
+
     //Console
     CONSOLE("Console"),
     MENU_STEP1("MenuStep1"),
     MENU_STEP2("MenuStep2"),
+    MENU_STEP3("MenuStep3"),
     HELPMENU("HelpMenu");
 
     private String pathString;

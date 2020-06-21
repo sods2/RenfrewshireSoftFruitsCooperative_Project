@@ -1,0 +1,5 @@
+     Select a fruit type:
+         1. Strawberries
+         2. Raspberries
+         3. Blackberries
+         4. Gooseberries

@@ -128,8 +128,6 @@ public class GradeBatch {
      * Getting all grades for batch
      */
     private void getBatchGrades(){
-        String errMessage = "     Please Enter a number (only digits allowed 0 to 9)";
-
         displayString("     Enter percentage of GRADE A Fruit in batch:");
 
         while(!getGrade());

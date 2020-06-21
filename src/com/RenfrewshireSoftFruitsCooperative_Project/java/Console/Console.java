@@ -1,10 +1,8 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.CreateNewBatch;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.GradeBatch;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.ListAllBatches;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.ViewBatchDetails;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.PricingManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus.*;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
@@ -16,11 +14,18 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 public class Console {
 
     FileManagement fileManagement = new MyFile();
+    PricingManager pricingManager = new PricingManager();
 
     /**
      * Running the application
      */
     public void run() {
+        if(!pricingManager.isPricingUpToDate()){
+            displayString("");
+            displayString("     Looks like the Pricing file is not Up to Date");
+            displayString("");
+            update_Payments();
+        }
         displayMainMenu();
     }
 
@@ -74,7 +79,7 @@ public class Console {
      * Display Main Menu
      */
     public void displayMainMenu() {
-        fileManagement.read(PathFile.MENU_STEP2.toString());
+        fileManagement.read(PathFile.MENU_STEP3.toString());
         getCommand();
     }
 
@@ -123,6 +128,14 @@ public class Console {
     public boolean view_BatchDetails() {
         ViewBatchDetails viewBatchDetails = new ViewBatchDetails();
         return verifyProcess(viewBatchDetails.displayBatchDetails(this));
+    }
+
+    /**
+     * Displaying specified batch's info
+     */
+    public boolean update_Payments() {
+        UpdatePayments updatePayments = new UpdatePayments();
+        return verifyProcess(updatePayments.updatePayments(this));
     }
 
     /**

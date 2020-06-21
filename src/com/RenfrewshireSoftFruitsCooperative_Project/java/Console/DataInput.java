@@ -200,7 +200,7 @@ public class DataInput {
      * @param console Console obj
      * @param input String input
      */
-    public static void trafficLight(Console console, String input){//TODO: check possible alternative
+    public static void trafficLight(Console console, String input){
         switch (input){
             //EXIT Application
             case "exit": case "5":

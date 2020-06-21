@@ -1,0 +1,15 @@
+{
+  "210620-BL-045": {
+    "id": "210620-BL-045",
+    "receivedDate": "21 06 2020",
+    "weight": 83,
+    "farmN": "045",
+    "fruitType": "BL",
+    "grades": {
+      "GRADE C": 24.5,
+      "GRADE B": 24.5,
+      "GRADE A": 24.5,
+      "REJECTED": 26.5
+    }
+  }
+}

@@ -59,13 +59,13 @@ public class BatchManager {
         return "";
     }
 
-    public boolean isGradeValid(String grade){//TODO: update test
-        if (grade.matches("\\d{1,3}[.]\\d{0,2}")) {
+    public boolean isGradeValid(String grade){
+        if (grade.matches("[0-9]*[.]?[0-9]")) {
             //Checking value format
             return true;
         }
             else {
-                displayString("Grade format is incorrect!\n" +
+                displayString("Grade: (" + grade + ") format is incorrect!\n" +
                         "Example (0, 50, 25.5)");
         }
         return false;
@@ -73,18 +73,21 @@ public class BatchManager {
 
     /**
      * Calculating how many kg a percentage represents
+     * @param percent percentage
+     * @param tot total number to consider
      * @return result of percentage to kg
      */
-    public String calculateKg(double percent, double tot){//TODO: update test
+    public String calculateKg(double percent, double tot){
 
         return String.format("%.3f", (tot * (percent / 100)));
     }
 
     /**
-     *  Checking Grades' sum
+     * Checking Grades' sum
+     * @param grades
      * @return return true if sum is equal to 100
      */
-    public boolean gradeVerification(HashMap<String, Double> grades){//TODO: update test
+    public boolean gradeVerification(HashMap<String, Double> grades){
 
         if (0!=grades.size()){
             //getting sum
@@ -106,7 +109,7 @@ public class BatchManager {
      * Getting batch Obj
      * @return batchList
      */
-    public List<Batch> getBatchObj(String folder, String filename) {//TODO: update test
+    public List<Batch> getBatchObj(String folder, String filename) {
         FileManagement fileManagement = new MyJSON();
         DataManager dataManager = new DataManager();
         List<Batch> batchList;

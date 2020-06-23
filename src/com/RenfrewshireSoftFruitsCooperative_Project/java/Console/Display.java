@@ -1,7 +1,10 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.FruitManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Pricing;
 
 import java.util.*;
 import java.util.stream.Stream;
@@ -71,6 +74,23 @@ public class Display {
             displayString("");
         } else {
             displayString("No batch found" );
+        }
+    }
+
+    /**
+     * Displaying inserted Price values by Fruit Type
+     * @param pricing
+     */
+    public static void displayPricing(Pricing pricing){//TODO: Update Test
+        FruitManager fruitManager = new FruitManager();
+
+        if(0!=pricing.getPricingList().size()){
+            for(Map.Entry<String, Price> price : pricing.getPricingList().entrySet()) {
+                SortedMap<String, Double> sortedList = new TreeMap<>(price.getValue().getPrice());
+                displayString("       - " + fruitManager.getFruitNameByCode(price.getKey()) + " " + sortedList);
+            }
+        } else {
+            displayString("         [No data Found]");
         }
     }
 

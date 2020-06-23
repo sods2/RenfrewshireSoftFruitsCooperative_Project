@@ -7,14 +7,12 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.FruitManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.PricingManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Pricing;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
@@ -31,12 +29,11 @@ public class UpdatePayments {//TODO: check for refactoring
     FruitManager fruitManager = new FruitManager();
     DataManager dataManager = new DataManager();
 
-    Price price = new Price();
-    List<Price> priceList = new ArrayList<>();
+    Price price;
     Pricing pricing = new Pricing();
     Data data = new Data();
 
-    String fruitType;
+    String fruitType = "null";
     Double price_input;
 
     public boolean updatePayments(Console console) {
@@ -50,19 +47,30 @@ public class UpdatePayments {//TODO: check for refactoring
             displayString("");
             displayString("     System Date: " + dateManager.getDate());
             displayString("");
-            //read fruitChoice menu
-            fileManagement.read("FruitChoice");
 
-            //Insert a fruit type
-            insertFruitType();
+            while(  !pricing.getPricingList().containsKey("ST") || !pricing.getPricingList().containsKey("RA") ||
+                    !pricing.getPricingList().containsKey("BL") || !pricing.getPricingList().containsKey("GO")){
 
-            displayString("     Enter prices below (£ per KG) for: " + fruitType);
+                //Displaying entered values
+                displayString("     Entered Values:");
+                Display.displayPricing(pricing);
+                displayString("");
 
-            //get Price for each category
-            getPricing();
+                //read fruitChoice menu
+                fileManagement.read("FruitChoice");
 
-            //Preparing Pricing for saving
-            savePricing();
+                //Insert a fruit type
+                insertFruitType();
+
+                displayString("     Enter prices below (£ per KG) for: " + fruitManager.getFruitNameByCode(fruitType));
+
+                //get Price for each category
+                getPricing();
+
+                //Preparing Pricing for saving
+                savePricing();
+            }
+
 
             //Saving changes into file
             createFile_Validation();
@@ -75,7 +83,7 @@ public class UpdatePayments {//TODO: check for refactoring
 
             return true;
         } catch (Exception e){
-            displayString("Error while grading batch\n");
+            displayString("Error while updating Payments\n");
         }
 
         return false;
@@ -99,6 +107,8 @@ public class UpdatePayments {//TODO: check for refactoring
      * Getting all grades for batch
      */
     private void getPricing(){
+        price = new Price();
+
         displayString("");
         displayString("     Enter price for GRADE A:");
 
@@ -119,7 +129,7 @@ public class UpdatePayments {//TODO: check for refactoring
         //getting price for grade C
         while(!getPrice());
         price.getPrice().put(FruitGrade.GRADE_C.toString(), price_input);
-        priceList.add(price);
+
     }
 
     /**
@@ -143,7 +153,7 @@ public class UpdatePayments {//TODO: check for refactoring
      */
     private void savePricing(){
 
-        pricing.getPricingList().put(fruitType, priceList);
+        pricing.getPricingList().put(fruitType, price);
     }
 
     /**

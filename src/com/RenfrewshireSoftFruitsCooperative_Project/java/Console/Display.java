@@ -74,7 +74,7 @@ public class Display {
     public static void displayBatchesWithGrades(List<Batch> batchList) {
         BatchManager batchManager = new BatchManager();
 
-        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+        displayString("    BATCH ID         TYPE    FARM N.      WEIGHT        DATE         PRICE");
 
         if(null!= batchList){
             //Display Batch's info
@@ -82,14 +82,24 @@ public class Display {
                     + e.getFruitType() + "  |    "
                     + e.getFarmN() + "    |   "
                     + e.getWeight() + "KG" + "   | "
-                    + e.getReceivedDate() + "\n    "
+                    + e.getReceivedDate()
+                    //Display Price
+                    + " |  £ " + BatchManager.getBatchPrice(e.getId().substring(0, e.getId().length() - 7), e.getFruitType(), e.getWeight(), e.getGrades())
+                    + "\n    "
             ));
 
             //Display Batch's Grades
             batchList.forEach(e -> {
                 SortedMap<String, Double> sortedMap = new TreeMap<>(e.getGrades());
                 for(Map.Entry<String, Double> entry : sortedMap.entrySet()) {
-                    displayString("    " + entry.getKey() + "    " + entry.getValue() + " = " + batchManager.calculateKg(entry.getValue() , e.getWeight()) + "KG");
+                    displayString(  "    " + entry.getKey()
+                                        + "    " + entry.getValue()
+                                        + " = " +
+                                        batchManager.calculateKg(entry.getValue() , e.getWeight()) + "KG" +
+                                        "   = £ " +
+                                        //Display Price
+                                        BatchManager.getGradePrice(e.getId().substring(0, e.getId().length() - 7), e.getFruitType(), e.getWeight(), e.getGrades(), entry.getKey())
+                    );
                     displayString("");
                 }
             });

@@ -136,35 +136,21 @@ public class BatchManager {
      * @return batch price tot
      */
     public static String getBatchPrice(String date, String fruitType, Double weight, HashMap<String, Double> grades){//TODO: update Test & check changes with impacted methods in case of refactoring is needed & Refactor logic should be somewhere else
-        final String folder = PathFile.PRICING.toString();
-        FileManagement fileManagement = new MyJSON();
-        DataManager dataManager = new DataManager();
 
-        Data data = null;
-        Map<String, Double> priceMapToDisplay = null;
+        Map<String, Double> priceMap;
 
         Double tot= 0.0;
-        String kgPerGrade = "";
+        String kgPerGrade;
 
         try {
-            List<String> fileList = fileManagement.getFileList(folder);
 
-            //Getting right pricing Obj for batch
-            for (String file : fileList) {
-                if (file.contains(date)) {
-                    data = (Data) fileManagement.read(folder + "/" + PathFile.PRICING_FILE.toString() + date);
-                }
-            }
-
-            //Getting the Price Map for the specified fruitType
-            if (null != data) {
-                priceMapToDisplay = dataManager.processPricingData(data, fruitType);
-            }
+            //Getting Price Map
+            priceMap = priceMapForDisplay(fruitType, date);
 
             //Calculating the total for the batch
-            if (null != priceMapToDisplay) {
+            if (null != priceMap) {
                 //Looping through the Price map
-                for (Map.Entry<String, Double> price : priceMapToDisplay.entrySet()) {
+                for (Map.Entry<String, Double> price : priceMap.entrySet()) {
 
                     //Getting how many kg for the specified Grade (Price.getKey represents the Grade)
                     kgPerGrade = new BatchManager().calculateKg(grades.get(price.getKey()), weight);
@@ -176,7 +162,7 @@ public class BatchManager {
             if(!"".equalsIgnoreCase(String.valueOf(tot))){
                 return String.format("%.2f", tot);
             } else {
-                return "0.00";
+                return "0,00";
             }
 
         } catch (Exception e) {
@@ -184,4 +170,73 @@ public class BatchManager {
         }
     }
 
+    /**
+     * Getting Grade Price tot
+     * @param date date in date ID format
+     * @param fruitType
+     * @param weight
+     * @param grade
+     * @return batch price tot
+     */
+    public static String getGradePrice(String date, String fruitType, Double weight, Map<String, Double> grades, String grade){//TODO: update Test & check changes with impacted methods in case of refactoring is needed & Refactor logic should be somewhere else
+
+        Map<String, Double> priceMap;
+
+        Double gradePrice = 0.0;
+        String kgPerGrade;
+
+        try {
+
+            //Getting Price Map
+            priceMap = priceMapForDisplay(fruitType, date);
+
+            //Calculating the total for the batch
+            if (null != priceMap) {
+                //Looping through the Price map
+                for (Map.Entry<String, Double> price : priceMap.entrySet()) {
+
+                    //Getting how many kg for the specified Grade (Price.getKey represents the Grade)
+                    kgPerGrade = new BatchManager().calculateKg(grades.get(price.getKey()), weight);
+                    //Adding to the total each price value for each grade amount and relative price
+                    if(grade.equalsIgnoreCase(price.getKey())){
+                        gradePrice = price.getValue() * Double.parseDouble(kgPerGrade.replace(",", "."));
+                        if(!"".equalsIgnoreCase(String.valueOf(gradePrice))){
+                            return String.format("%.2f", gradePrice);
+                        }
+                    }
+                }
+            }
+
+//            if(!"".equalsIgnoreCase(String.valueOf(gradePrice))){
+//                return String.format("%.2f", gradePrice);
+//            } else {
+//                return "0.00";
+//            }
+
+            return "0.00";
+        } catch (Exception e) {
+            return "0.00";
+        }
+
+    }
+
+    /**
+     * Getting Price Map
+     * @param fruitType
+     * @param date
+     * @return price map
+     */
+    private static Map<String, Double> priceMapForDisplay(String fruitType, String date){
+        DataManager dataManager = new DataManager();
+        PricingManager pricingManager = new PricingManager();
+
+        //Getting data Obj
+        Data data = dataManager.getDataFromPricingFile(PathFile.PRICING.toString(), date);
+
+        //Getting the Price Map for the specified fruitType
+        if (null != data) {
+            return pricingManager.getPriceMap(data, fruitType);
+        }
+        return null;
+    }
 }

@@ -1,6 +1,9 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Pricing;
@@ -94,6 +97,27 @@ public class DataManager {
                     "Please try again!");
         }
 
+        return null;
+    }
+
+    /**
+     * Getting Data Obj from specified File
+     * @param folder
+     * @param date
+     * @return
+     * @throws Exception
+     */
+    public Data getDataFromPricingFile(String folder, String date){
+        FileManagement fileManagement = new MyJSON();
+
+        List<String> fileList = fileManagement.getFileList(folder);
+
+        //Getting right pricing Obj for batch
+        for (String file : fileList) {
+            if (file.contains(date)) {
+                return  (Data) fileManagement.read(folder + "/" + PathFile.PRICING_FILE.toString() + date);
+            }
+        }
         return null;
     }
 

@@ -13,6 +13,8 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 
 public class Console {
 
+    final private String folder = "Pricing";
+
     FileManagement fileManagement = new MyFile();
     PricingManager pricingManager = new PricingManager();
 
@@ -20,7 +22,7 @@ public class Console {
      * Running the application
      */
     public void run() {
-        if(!pricingManager.isPricingUpToDate()){
+        if(!pricingManager.isPricingUpToDate(folder)){
             displayString("");
             displayString("     Looks like the Pricing file is not Up to Date");
             displayString("");

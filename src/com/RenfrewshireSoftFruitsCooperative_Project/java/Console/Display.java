@@ -81,7 +81,7 @@ public class Display {
      * Displaying inserted Price values by Fruit Type
      * @param pricing
      */
-    public static void displayPricing(Pricing pricing){//TODO: Update Test
+    public static void displayPricing(Pricing pricing){
         FruitManager fruitManager = new FruitManager();
 
         if(0!=pricing.getPricingList().size()){

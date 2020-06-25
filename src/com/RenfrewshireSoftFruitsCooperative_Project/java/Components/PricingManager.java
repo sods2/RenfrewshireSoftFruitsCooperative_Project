@@ -7,24 +7,22 @@ import java.util.List;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
-public class PricingManager {//TODO: Test
-
-    final private String folder = "Pricing";
+public class PricingManager {
 
     FileManagement fileManagement = new MyJSON();
     DateManager dateManager = new DateManager();
 
     List<String> filenameList;
 
-    public boolean isPricingUpToDate(){
+    public boolean isPricingUpToDate(String folder){
 
-        if (!isTodaysFilePresent()){
+        if (!isTodaysFilePresent(folder)){
             return false;
         }
         return true;
     }
 
-    private boolean isTodaysFilePresent(){
+    private boolean isTodaysFilePresent(String folder){
 
         filenameList = fileManagement.getFileList(folder);
         String today = dateManager.getDateForID();
@@ -50,19 +48,5 @@ public class PricingManager {//TODO: Test
         }
         return false;
     }
-
-//    /**
-//     * Inserting a fruit type
-//     */
-//    private void insertFruitType(){//TODO: refactoring
-//        int fruitLoop = 0;
-//        while ("".equalsIgnoreCase(fruitType = fruitManager.getFruitCodesByID(fruitType))){
-//            if(fruitLoop>0){
-//                displayString("    Fruit not in the list, please try again.");
-//            }
-//            fruitType = console.getInput();
-//            fruitLoop++;
-//        }
-//    }
 
 }

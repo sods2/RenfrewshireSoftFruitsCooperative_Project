@@ -3,12 +3,16 @@ package Test.Components;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.FruitGrade;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class BatchManagerTest {
 
@@ -16,17 +20,17 @@ public class BatchManagerTest {
     private final String test_filename = PathFile.JSON_TEST + "_030620-BL-001";
 
     BatchManager batchManager = new BatchManager();
+
     HashMap<String, Double> grades = new HashMap<>();
     HashMap<String, Double> sizeZeroGrades = new HashMap<>();
 
     @Before
     public void before(){
-
+        //Preparing for gradeVerification
         grades.put(FruitGrade.GRADE_A.toString(), 24.5);
         grades.put(FruitGrade.GRADE_B.toString(), 24.5);
         grades.put(FruitGrade.GRADE_C.toString(), 24.5);
         grades.put(FruitGrade.REJECTED.toString(), 26.5);
-
     }
 
     @Test

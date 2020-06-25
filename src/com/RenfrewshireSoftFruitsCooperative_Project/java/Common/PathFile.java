@@ -6,6 +6,7 @@ public enum PathFile {
     TESTPATH("Test"),
     TEST("FileTest"),
     JSON_TEST("JSONTest"),
+    PRICING_TEST("PricingTest_"),
 
     //JSON
     JSON("JSON"),

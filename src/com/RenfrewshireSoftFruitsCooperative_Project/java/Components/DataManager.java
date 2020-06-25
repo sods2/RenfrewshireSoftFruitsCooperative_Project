@@ -36,7 +36,7 @@ public class DataManager {
         return null;
     }
 
-    public List<Batch> processBatchData(Data data){//TODO: update Test
+    public List<Batch> processBatchData(Data data){
 
         List<Batch> batchList = new ArrayList<>();
         Batch batch;

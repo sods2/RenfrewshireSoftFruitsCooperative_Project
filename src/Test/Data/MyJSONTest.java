@@ -1,6 +1,7 @@
 package Test.Data;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
@@ -33,9 +34,11 @@ public class MyJSONTest {
     }
 
     @Test
-    public void createNewFile() throws IOException {//TODO: keep adding different file types
+    public void createNewFile() throws IOException {
         //Test JSON for batch
         Assert.assertTrue(fileManagement.createNewFile(PathFile.TESTPATH.toString() + "/" + PathFile.JSON_TEST.toString() + "_" + batch.getId(), data));
+        //Test JSON for Pricing
+        Assert.assertTrue(fileManagement.createNewFile(PathFile.TESTPATH.toString() + "/" + PathFile.PRICING_TEST.toString() + "_" + new DateManager().getDateForID(), data));
     }
 
     //createNewFile needs to run first otherwise will return error

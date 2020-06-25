@@ -41,7 +41,6 @@ public class UpdatePayments {//TODO: check for refactoring
         this.console = console;
 
         try{
-            pricingManager.isPricingUpToDate();
 
             displayString("     Here you can assign a price to every fruit Type");
             displayString("");
@@ -92,7 +91,7 @@ public class UpdatePayments {//TODO: check for refactoring
     /**
      * Inserting a fruit type
      */
-    private void insertFruitType(){//TODO: move rest into FruitManager
+    private void insertFruitType(){
         int fruitLoop = 0;
         while ("".equalsIgnoreCase(fruitType = fruitManager.getFruitCodesByID(fruitType))){
             if(fruitLoop>0){

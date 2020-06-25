@@ -44,9 +44,10 @@ public class PricingManagerTest {
 
     /**
      * To test this again we would need to delete the Pricing's test file Manually
+     * (No files with today's date should be in the folder to avoid errors from isPricingUpToDate)
      */
     @Test
-    public void isPricingUpToDate() {
+    public void isPricingUpToDateTest() {
         Assert.assertFalse(pricingManager.isPricingUpToDate(PathFile.TESTPATH.toString()));
 
         createTestFile();
@@ -55,13 +56,23 @@ public class PricingManagerTest {
     }
 
     @Test
-    public void isPriceValid() {
+    public void isPriceValidTest() {
         Assert.assertFalse(pricingManager.isPriceValid("-1"));
         Assert.assertTrue(pricingManager.isPriceValid("0"));
         Assert.assertTrue(pricingManager.isPriceValid("2.5"));
         Assert.assertTrue(pricingManager.isPriceValid("2.50"));
         Assert.assertFalse(pricingManager.isPriceValid("2.500"));
         Assert.assertFalse(pricingManager.isPriceValid("2,5"));
+    }
+
+    @Test
+    public void getPriceMapTest() {
+        //Creating the file needed
+        createTestFile();
+        Assert.assertNotNull(pricingManager.getPriceMap(data, "ST"));
+        Assert.assertNull(pricingManager.getPriceMap(data, "BL"));
+        Assert.assertNull(pricingManager.getPriceMap(data, "RA"));
+        Assert.assertNull(pricingManager.getPriceMap(data, "GO"));
     }
 
     @After

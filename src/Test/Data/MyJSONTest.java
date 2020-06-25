@@ -34,7 +34,7 @@ public class MyJSONTest {
     }
 
     @Test
-    public void createNewFile() throws IOException {
+    public void createNewFileTest() throws IOException {
         //Test JSON for batch
         Assert.assertTrue(fileManagement.createNewFile(PathFile.TESTPATH.toString() + "/" + PathFile.JSON_TEST.toString() + "_" + batch.getId(), data));
         //Test JSON for Pricing
@@ -43,13 +43,13 @@ public class MyJSONTest {
 
     //createNewFile needs to run first otherwise will return error
     @Test
-    public void read() {
+    public void readTest() {
         //Test JSON for batch
         Assert.assertNotNull(fileManagement.read(PathFile.TESTPATH.toString() + "/" + PathFile.JSON_TEST.toString() + "_" + batch.getId()));
     }
 
     @Test
-    public void readAll() {
+    public void readAllTest() {
         //getting list of file names
         List<String> files = fileManagement.getFileList(PathFile.TESTPATH.toString());
 

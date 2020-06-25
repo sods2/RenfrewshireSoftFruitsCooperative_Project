@@ -29,7 +29,7 @@ public class DataInputTest {
     }
 
     @Test
-    public void getMenuInput(){
+    public void getMenuInputTest(){
         //passing value to System input
         in_menuInput = new ByteArrayInputStream("test".getBytes());
         System.setIn(in_menuInput);
@@ -45,7 +45,7 @@ public class DataInputTest {
     }
 
     @Test
-    public void getUserInput(){
+    public void getUserInputTest(){
         //passing value to System input
         in_userInput = new ByteArrayInputStream("test".getBytes());
         System.setIn(in_userInput);
@@ -60,7 +60,7 @@ public class DataInputTest {
     }
 
     @Test
-    public void checkInput() {
+    public void checkInputTest() {
 
         assertFalse(DataInput.checkInput(""));
         assertTrue(DataInput.checkInput(Command._1.toString()));
@@ -76,7 +76,7 @@ public class DataInputTest {
     }
 
     @Test
-    public void consoleIdle() {
+    public void consoleIdleTest() {
         //passing value to System input
         in_consoleIdle = new ByteArrayInputStream("\r".getBytes());
         System.setIn(in_consoleIdle);
@@ -85,7 +85,7 @@ public class DataInputTest {
     }
 
     @Test
-    public void checkAttemptN() {
+    public void checkAttemptNTest() {
 
         assertFalse(DataInput.checkAttemptN(0));
         assertFalse(DataInput.checkAttemptN(1));
@@ -95,7 +95,7 @@ public class DataInputTest {
     }
 
     @Test
-    public void validation() {
+    public void validationTest() {
         Console console = new Console();
 
         //passing value to System input
@@ -109,11 +109,6 @@ public class DataInputTest {
         System.setIn(in_validation_2);
 
         assertFalse(console.validate_Input());
-    }
-
-    @Test
-    public void trafficLight() {
-
     }
 
     @After

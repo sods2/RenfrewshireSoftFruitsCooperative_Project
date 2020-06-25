@@ -36,8 +36,8 @@ public class DataManagerTest {
     public void before(){
         batch = new Batch(Double.parseDouble("50"), "001", "ST", new HashMap<>());
 
-        price.getPrice().put("TestPrice", 12.0);
-        pricing.getPricingList().put(new DateManager().getDateForID(), price);
+        price.getPrice().put("GRADE A", 12.0);
+        pricing.getPricingList().put("ST", price);
         dataForPricing = dataManager.processData(pricing,"TestPricing");
 
         //Preparing for processBatchData
@@ -64,11 +64,11 @@ public class DataManagerTest {
     @Test
     public void processPricingData() {
 
-//        Assert.assertNotNull(dataManager.processPricingData(dataForPricing, Price.class));
-//        Assert.assertEquals(dataManager.processPricingData(dataForPricing, Price.class).size(), 1);
-//
-//        Assert.assertNotNull(dataManager.processPricingData(dataForPricing, Pricing.class));
-//        Assert.assertEquals(dataManager.processPricingData(dataForPricing, Pricing.class).size(), 1);
+        Assert.assertEquals(dataManager.processPricingData(dataForPricing,"ST").size(), 1);
+
+        Assert.assertNull(dataManager.processPricingData(dataForPricing, "BL"));
+        Assert.assertNull(dataManager.processPricingData(dataForPricing, "GO"));
+        Assert.assertNull(dataManager.processPricingData(dataForPricing, "RA"));
     }
 
     @After

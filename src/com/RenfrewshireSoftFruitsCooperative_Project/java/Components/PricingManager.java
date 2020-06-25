@@ -9,13 +9,18 @@ import java.util.Map;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
-public class PricingManager {//TODO: add comments & check for test
+public class PricingManager {
 
     FileManagement fileManagement = new MyJSON();
     DateManager dateManager = new DateManager();
 
     List<String> filenameList;
 
+    /**
+     * Checking if Pricing is Up To Date
+     * @param folder
+     * @return true if condition is met
+     */
     public boolean isPricingUpToDate(String folder){
 
         if (!isTodaysFilePresent(folder)){
@@ -24,8 +29,14 @@ public class PricingManager {//TODO: add comments & check for test
         return true;
     }
 
+    /**
+     * Checking if a File named with today's date is present in specified folder
+     * @param folder name
+     * @return true if condition is met
+     */
     private boolean isTodaysFilePresent(String folder){
 
+        //Getting filename List
         filenameList = fileManagement.getFileList(folder);
         String today = dateManager.getDateForID();
 
@@ -39,6 +50,11 @@ public class PricingManager {//TODO: add comments & check for test
         return false;
     }
 
+    /**
+     * checking if price format is valid
+     * @param price
+     * @return true if condition is met
+     */
     public boolean isPriceValid(String price){
         if (price.matches("[0-9]*[.]?[0-9]?[0-9]")) {
             //Checking value format
@@ -51,7 +67,13 @@ public class PricingManager {//TODO: add comments & check for test
         return false;
     }
 
-    public Map<String, Double> getPriceMap(Data data, String fruitType){//TODO: Add test
+    /**
+     * Getting Price Map
+     * @param data
+     * @param fruitType
+     * @return Price Map
+     */
+    public Map<String, Double> getPriceMap(Data data, String fruitType){
         DataManager dataManager = new DataManager();
 
         return dataManager.processPricingData(data, fruitType);

@@ -19,7 +19,7 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 /**
  * Using this Class to create the Console UI for updating the Payments
  */
-public class UpdatePayments {//TODO: check for refactoring
+public class UpdatePayments {
 
     Console console;
 

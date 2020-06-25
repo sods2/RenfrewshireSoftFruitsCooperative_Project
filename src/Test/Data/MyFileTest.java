@@ -27,7 +27,7 @@ public class MyFileTest {
     }
 
     @Test
-    public void read() throws IOException {
+    public void readTest() throws IOException {
         Assert.assertNotNull(obj = fileManagement.read(PathFile.TESTPATH.toString() + "/" + PathFile.TEST.toString()));
     }
 

@@ -27,14 +27,14 @@ public class DateManagerTest {
     }
 
     @Test
-    public void getDate() {
+    public void getDateTest() {
 
         Assert.assertEquals(date.format(dateFormatter), dateManager.getDate());
 
     }
 
     @Test
-    public void getDateForID() {
+    public void getDateForIDTest() {
 
         Assert.assertEquals(dateForID.format(dateForIDFormatter), dateManager.getDateForID());
 

@@ -11,7 +11,7 @@ public class FileManagementTest {
     FileManagement fileManagement = new MyJSON();
 
     @Test
-    public void getFileList() {
+    public void getFileListTest() {
 
         //Testing list of file names
         Assert.assertNotNull(fileManagement.getFileList(PathFile.TESTPATH.toString()));

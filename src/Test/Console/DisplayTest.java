@@ -41,7 +41,7 @@ public class DisplayTest {
     }
 
     @Test
-    public void displayString() {
+    public void displayStringTest() {
 
         System.out.println("expected: Test display content (String)");
 
@@ -50,7 +50,7 @@ public class DisplayTest {
     }
 
     @Test
-    public void displayStream() {
+    public void displayStreamTest() {
 
         Stream<String> testStream = "Test display content (Stream)".codePoints().mapToObj(o -> Character.toString((char) o));
 
@@ -60,7 +60,7 @@ public class DisplayTest {
     }
 
     @Test
-    public void displayBatchesWithGrades() {
+    public void displayBatchesWithGradesTest() {
         System.out.println("expected: Test display Batches with grades: no value should be printed only the headers will be displayed");
         Display.displayBatchesWithGrades(new ArrayList<>());
 
@@ -69,7 +69,7 @@ public class DisplayTest {
     }
 
     @Test
-    public void displayPricing() {
+    public void displayPricingTest() {
 
         System.out.println("Testing display of Pricing the format should be (Fruit Type) - { GRADE A: value, GRADE B: value, GRADE C: value }");
         System.out.println("");

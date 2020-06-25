@@ -21,7 +21,7 @@ public class FruitManagerTest {
     }
 
     @Test
-    public void getFruitCodesByID() {
+    public void getFruitCodesByIDTest() {
 
         Assert.assertTrue(fruitManager.getFruitCodesByID("0").isEmpty());
         Assert.assertFalse(fruitManager.getFruitCodesByID("1").isEmpty());
@@ -33,7 +33,7 @@ public class FruitManagerTest {
     }
 
     @Test
-    public void getFruitList() {
+    public void getFruitListTest() {
 
         Assert.assertNotNull(fruitList);
         Assert.assertEquals(fruitList.size(),4);
@@ -45,7 +45,7 @@ public class FruitManagerTest {
     }
 
     @Test
-    public void getFruitNameByCode() {
+    public void getFruitNameByCodeTest() {
 
         Assert.assertEquals(fruitManager.getFruitNameByCode(""), "null");
         Assert.assertFalse(fruitManager.getFruitNameByCode("ST").isEmpty());

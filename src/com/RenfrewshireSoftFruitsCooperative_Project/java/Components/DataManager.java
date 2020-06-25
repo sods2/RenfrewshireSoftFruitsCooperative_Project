@@ -71,7 +71,7 @@ public class DataManager {
      * @param fruitType fruit Type that we need
      * @return specified element
      */
-    public Map<String, Double> processPricingData(Data data, String fruitType){//TODO: need to do this & Update Test
+    public Map<String, Double> processPricingData(Data data, String fruitType){
 
         List<Pricing> pricingList = new ArrayList<>();
         Pricing pricing;

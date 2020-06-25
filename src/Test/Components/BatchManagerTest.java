@@ -3,6 +3,8 @@ package Test.Components;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.FruitGrade;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
@@ -27,14 +29,14 @@ public class BatchManagerTest {
     @Before
     public void before(){
         //Preparing for gradeVerification
-        grades.put(FruitGrade.GRADE_A.toString(), 24.5);
-        grades.put(FruitGrade.GRADE_B.toString(), 24.5);
-        grades.put(FruitGrade.GRADE_C.toString(), 24.5);
+        grades.put(FruitGrade.GRADE_A.toString(), 22.0);
+        grades.put(FruitGrade.GRADE_B.toString(), 30.5);
+        grades.put(FruitGrade.GRADE_C.toString(), 21.0);
         grades.put(FruitGrade.REJECTED.toString(), 26.5);
     }
 
     @Test
-    public void checkBatchWeight() {
+    public void checkBatchWeightTest() {
 
         Assert.assertTrue (batchManager.checkBatchWeight("0").isEmpty());
         Assert.assertFalse (batchManager.checkBatchWeight("100").isEmpty());
@@ -44,7 +46,7 @@ public class BatchManagerTest {
     }
 
     @Test
-    public void checkFarmN() {
+    public void checkFarmNTest() {
 
         Assert.assertEquals ("001", batchManager.checkFarmN("1"));
         Assert.assertEquals ("001", batchManager.checkFarmN("01"));
@@ -54,7 +56,7 @@ public class BatchManagerTest {
     }
 
     @Test
-    public void isGradeValid() {
+    public void isGradeValidTest() {
         Assert.assertFalse(batchManager.isGradeValid("-1"));
         Assert.assertTrue(batchManager.isGradeValid("0"));
         Assert.assertTrue(batchManager.isGradeValid("5"));
@@ -65,7 +67,7 @@ public class BatchManagerTest {
     }
 
     @Test
-    public void calculateKg() {
+    public void calculateKgTest() {
         Assert.assertEquals(batchManager.calculateKg(5.0, 100), "5,000");
         Assert.assertEquals(batchManager.calculateKg(25, 100), "25,000");
         Assert.assertEquals(batchManager.calculateKg(50.0, 100), "50,000");
@@ -75,14 +77,30 @@ public class BatchManagerTest {
     }
 
     @Test
-    public void gradeVerification() {
+    public void gradeVerificationTest() {
         Assert.assertTrue(batchManager.gradeVerification(grades));
         Assert.assertFalse(batchManager.gradeVerification(sizeZeroGrades));
     }
 
     @Test
-    public void getBatchObj() {
+    public void getBatchObjTest() {
         Assert.assertNotNull(batchManager.getBatchObj(folder, test_filename));
+    }
+
+    @Test
+    public void getBatchPriceTest() {
+        Assert.assertEquals(BatchManager.getBatchPrice(new DateManager().getDateForID(), "ST", 82.0, grades), "60,27");
+        Assert.assertEquals(BatchManager.getBatchPrice(new DateManager().getDateForID(), "ST", 50.0, grades), "36,75");
+        Assert.assertEquals(BatchManager.getBatchPrice(new DateManager().getDateForID(), "ST", 0.0, grades), "0,00");
+        Assert.assertNotEquals(BatchManager.getBatchPrice(new DateManager().getDateForID(), "ST", 0.1, grades), "0,00");
+    }
+
+    @Test
+    public void getGradePriceTest() {
+        Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 82.0, grades, "GRADE A"), "18,04");
+        Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 0.0, grades, "GRADE A"), "0,00");
+        Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 0.1, grades, "GRADE A"), "0,02");
+        Assert.assertNotEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 50.0, grades, "GRADE A"), "0,00");
     }
 
     @After

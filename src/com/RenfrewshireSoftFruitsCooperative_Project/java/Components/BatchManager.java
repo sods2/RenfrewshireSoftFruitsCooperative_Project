@@ -135,7 +135,7 @@ public class BatchManager {
      * @param grades
      * @return batch price tot
      */
-    public static String getBatchPrice(String date, String fruitType, Double weight, HashMap<String, Double> grades){//TODO: update Test & check changes with impacted methods in case of refactoring is needed & Refactor logic should be somewhere else
+    public static String getBatchPrice(String date, String fruitType, Double weight, HashMap<String, Double> grades){
 
         Map<String, Double> priceMap;
 
@@ -178,7 +178,7 @@ public class BatchManager {
      * @param grade
      * @return batch price tot
      */
-    public static String getGradePrice(String date, String fruitType, Double weight, Map<String, Double> grades, String grade){//TODO: update Test & check changes with impacted methods in case of refactoring is needed & Refactor logic should be somewhere else
+    public static String getGradePrice(String date, String fruitType, Double weight, Map<String, Double> grades, String grade){
 
         Map<String, Double> priceMap;
 

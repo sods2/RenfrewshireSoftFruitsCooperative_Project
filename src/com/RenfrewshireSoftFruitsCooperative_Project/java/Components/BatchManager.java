@@ -1,5 +1,6 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
@@ -7,6 +8,7 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
@@ -124,4 +126,62 @@ public class BatchManager {
         }
         return null;
     }
+
+    /**
+     * Getting Batch Price tot
+     * @param date date in date ID format
+     * @param fruitType
+     * @param weight
+     * @param grades
+     * @return batch price tot
+     */
+    public static String getBatchPrice(String date, String fruitType, Double weight, HashMap<String, Double> grades){//TODO: update Test & check changes with impacted methods in case of refactoring is needed & Refactor logic should be somewhere else
+        final String folder = PathFile.PRICING.toString();
+        FileManagement fileManagement = new MyJSON();
+        DataManager dataManager = new DataManager();
+
+        Data data = null;
+        Map<String, Double> priceMapToDisplay = null;
+
+        Double tot= 0.0;
+        String kgPerGrade = "";
+
+        try {
+            List<String> fileList = fileManagement.getFileList(folder);
+
+            //Getting right pricing Obj for batch
+            for (String file : fileList) {
+                if (file.contains(date)) {
+                    data = (Data) fileManagement.read(folder + "/" + PathFile.PRICING_FILE.toString() + date);
+                }
+            }
+
+            //Getting the Price Map for the specified fruitType
+            if (null != data) {
+                priceMapToDisplay = dataManager.processPricingData(data, fruitType);
+            }
+
+            //Calculating the total for the batch
+            if (null != priceMapToDisplay) {
+                //Looping through the Price map
+                for (Map.Entry<String, Double> price : priceMapToDisplay.entrySet()) {
+
+                    //Getting how many kg for the specified Grade (Price.getKey represents the Grade)
+                    kgPerGrade = new BatchManager().calculateKg(grades.get(price.getKey()), weight);
+                    //Adding to the total each price value for each grade amount and relative price
+                    tot += price.getValue() * Double.parseDouble(kgPerGrade.replace(",", "."));
+                }
+            }
+
+            if(!"".equalsIgnoreCase(String.valueOf(tot))){
+                return String.format("%.2f", tot);
+            } else {
+                return "0.00";
+            }
+
+        } catch (Exception e) {
+            return "0.00";
+        }
+    }
+
 }

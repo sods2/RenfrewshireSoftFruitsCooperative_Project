@@ -61,13 +61,15 @@ public class DataManagerTest {
         Assert.assertNotNull(dataManager.processBatchData(dataForProcessBatch));
     }
 
-//    @Test
-//    public void processPricingData() {
-//
+    @Test
+    public void processPricingData() {
+
 //        Assert.assertNotNull(dataManager.processPricingData(dataForPricing, Price.class));
-//        Assert.assertNotNull(dataManager.processPricingData(dataForPricing, Pricing.class));
+//        Assert.assertEquals(dataManager.processPricingData(dataForPricing, Price.class).size(), 1);
 //
-//    }
+//        Assert.assertNotNull(dataManager.processPricingData(dataForPricing, Pricing.class));
+//        Assert.assertEquals(dataManager.processPricingData(dataForPricing, Pricing.class).size(), 1);
+    }
 
     @After
     public void after(){

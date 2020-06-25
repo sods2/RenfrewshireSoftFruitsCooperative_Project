@@ -62,49 +62,39 @@ public class DataManager {
         return null;
     }
 
-//    /**
-//     * Getting Pricing or Price Obj from (depending on the class is passed through)
-//     * @param data data should be represented by Pricing
-//     * @param aClass this is the class of the element we need to get back
-//     * @return specified element
-//     */
-//    public List<?> processPricingData(Data data, Class<?> aClass){//TODO: need to do this & Update Test
-//
-//        List<Pricing> pricingList = new ArrayList<>();
-//        List<Price> priceList = new ArrayList<>();
-//        Pricing pricing;
-//        Price price;
-//        Gson gson = new Gson();
-//        String PricingJson;
-//        String PriceJson;
-//
-//        try {
-//
-//            //deserialize json
-//            for(Map.Entry<String, Object> pricingEntry : data.getData().entrySet()) {
-//                PricingJson = gson.toJson(pricingEntry.getValue());
-//                pricing = gson.fromJson(PricingJson, Pricing.class);
-//                pricingList.add(pricing);
-//
-//                for(Map.Entry<String, Price> priceEntry : pricing.getPricingList().entrySet()) {
-//                    PriceJson = gson.toJson(priceEntry.getValue());
-//                    price = gson.fromJson(PriceJson, Price.class);
-//                    priceList.add(price);
-//                }
-//            }
-//
-//            if (aClass==Pricing.class) {
-//                return pricingList;
-//            } else if (aClass==Price.class){
-//                return priceList;
-//            }
-//
-//        } catch (Exception e) {
-//            displayString("Error while processing the batch Data!\n" +
-//                    "Please try again!");
-//        }
-//
-//        return null;
-//    }
+    /**
+     * Getting Pricing or Price Obj from (depending on the class is passed through)
+     * @param data data should be represented by Pricing
+     * @param fruitType fruit Type that we need
+     * @return specified element
+     */
+    public Map<String, Double> processPricingData(Data data, String fruitType){//TODO: need to do this & Update Test
+
+        List<Pricing> pricingList = new ArrayList<>();
+        Pricing pricing;
+        Gson gson = new Gson();
+        String PricingJson;
+
+        try {
+
+            //deserialize json
+            for(Map.Entry<String, Object> pricingEntry : data.getData().entrySet()) {
+                PricingJson = gson.toJson(pricingEntry.getValue());
+                pricing = gson.fromJson(PricingJson, Pricing.class);
+                pricingList.add(pricing);
+            }
+
+            switch (fruitType){
+                case "ST": case "RA": case "BL": case "GO":
+                    return pricingList.get(0).getPricingList().get(fruitType).getPrice();
+            }
+
+        } catch (Exception e) {
+            displayString("Error while processing the batch Data!\n" +
+                    "Please try again!");
+        }
+
+        return null;
+    }
 
 }

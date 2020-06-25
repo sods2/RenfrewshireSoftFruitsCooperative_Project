@@ -3,6 +3,7 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
@@ -52,7 +53,7 @@ public class ListAllBatches {
             }
 
             //Displaying batches' info
-            displayBatches();
+            Display.displayBatches(batchList);
 
             displayString("");
 
@@ -68,24 +69,6 @@ public class ListAllBatches {
         }
 
         return false;
-    }
-
-    /**
-     * Displaying batches' info
-     */
-    private void displayBatches(){
-        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
-
-        //printing all batches' information
-        if(null!= batchList){
-            batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
-                    + e.getFruitType() + "  |    "
-                    + e.getFarmN() + "    |   "
-                    + e.getWeight() + "KG" + "   | "
-                    + e.getReceivedDate()));
-        } else {
-            displayString("No batch list found!");
-        }
     }
 
 }

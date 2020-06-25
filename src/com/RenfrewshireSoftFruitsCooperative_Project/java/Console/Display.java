@@ -1,7 +1,12 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.FruitManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Pricing;
@@ -42,6 +47,27 @@ public class Display {
             data.forEach(System.out::println);
         } else {
             displayString("Data not Found!");
+        }
+    }
+
+    /**
+     * Displaying batches' info
+     */
+    public static void displayBatches(List<Batch> batchList){
+        displayString("    BATCH ID         TYPE    FARM N.     WEIGHT      DATE");
+
+        //printing all batches' information
+        if(null!= batchList){
+            batchList.forEach(e -> displayString("  " + e.getId() + "    |  "
+                    + e.getFruitType() + "  |    "
+                    + e.getFarmN() + "    |   "
+                    + e.getWeight() + "KG" + "   | "
+                    + e.getReceivedDate()
+                    //Display Price
+                    + " " + displayPrice(e.getId().substring(0, e.getId().length() - 7), e.getFruitType(), e.getGrades())
+            ));
+        } else {
+            displayString("No batch list found!");
         }
     }
 
@@ -92,6 +118,35 @@ public class Display {
         } else {
             displayString("         [No data Found]");
         }
+    }
+
+    private static String displayPrice(String date, String fruitType, HashMap<String, Double> grades){//TODO: update Test & check changes with impacted methods in case of refactoring is needed & Refactor logic should be somewhere else
+        final String folder = PathFile.PRICING.toString();
+        FileManagement fileManagement = new MyJSON();
+        DataManager dataManager = new DataManager();
+
+        Data data = null;
+
+        Map<String, Double> priceMapToDisplay;
+
+        List<Double> priceList;
+
+        List<String> fileList = fileManagement.getFileList(folder);
+
+        //Getting right pricing for batch
+        for(String file : fileList){
+            if(file.contains(date)){
+                data = (Data) fileManagement.read(folder + "/" + PathFile.PRICING_FILE.toString() + date);
+            }
+        }
+
+        if(null!=data){
+            priceMapToDisplay = dataManager.processPricingData(data, fruitType);
+        }
+
+//        priceList.
+
+        return "";
     }
 
 }

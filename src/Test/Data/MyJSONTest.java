@@ -29,7 +29,7 @@ public class MyJSONTest {
     public void before(){
         fileManagement = new MyJSON();
         data = new Data();
-        batch = new Batch(50, "005", "ST", new HashMap<>());
+        batch = new Batch(50.0, "005", "ST", new HashMap<>());
         data.getData().put(batch.getId(), batch);
     }
 

@@ -25,16 +25,16 @@ public class BatchManager {
 
         try {
 
-            if (Integer.parseInt(weight) <= 100 && Integer.parseInt(weight) > 0) {
+            if (Double.parseDouble(weight) <= 100 && Double.parseDouble(weight) > 0) {
                 return weight;
             } else {
-                displayString("    The Weight inserted is invalid.\n" +
-                        "   (eg. > 0 to <= 100)");
+                displayString("The Weight inserted is invalid.\n" +
+                        "   (eg. > 0 to <= 100 - valid: 12,5)");
             }
 
         } catch (Exception e) {
-            displayString("    The Weight inserted is invalid.\n" +
-                    "   (eg. > 0 to <= 100)");
+            displayString("The Weight inserted is invalid.\n" +
+                    "   (eg. > 0 to <= 100 - valid: 12,5)");
         }
         return "";
     }

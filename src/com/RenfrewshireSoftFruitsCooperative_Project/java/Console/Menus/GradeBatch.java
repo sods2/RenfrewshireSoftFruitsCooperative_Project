@@ -32,7 +32,7 @@ public class GradeBatch {
     //Storing batch information
     private String id;
     private String receivedDate;
-    private int weight;
+    private Double weight;
     private String farmN;
     private String fruitType;
     HashMap<String, Double> grades = new HashMap<>();

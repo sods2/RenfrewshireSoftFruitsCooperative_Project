@@ -111,7 +111,7 @@ public class CreateNewBatch {
     private void insertBatchWeight(){
         displayString("    Enter batch weight in KG’s (N.B. Max weight per batch is 100Kg).");
         //keep asking weight until is write ( > 0 & <= 100 )
-        while ((weight = batchManager.checkBatchWeight(console.getInput())).isEmpty());
+        while ((weight = batchManager.checkBatchWeight(console.getInput_Double())).isEmpty());
     }
 
     /**
@@ -124,7 +124,7 @@ public class CreateNewBatch {
                 " received on: " + date);
 
         if (console.validate_Input()){
-            batch = new Batch(Integer.parseInt(weight), farmN, fruitType, new HashMap<>());
+            batch = new Batch(Double.parseDouble(weight), farmN, fruitType, new HashMap<>());
             //formatting data
             data = new DataManager().processData(batch, batch.getId());
             //writing file

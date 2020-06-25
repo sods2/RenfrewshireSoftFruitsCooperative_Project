@@ -34,7 +34,7 @@ public class DataManagerTest {
 
     @Before
     public void before(){
-        batch = new Batch(Integer.parseInt("50"), "001", "ST", new HashMap<>());
+        batch = new Batch(Double.parseDouble("50"), "001", "ST", new HashMap<>());
 
         price.getPrice().put("TestPrice", 12.0);
         pricing.getPricingList().put(new DateManager().getDateForID(), price);

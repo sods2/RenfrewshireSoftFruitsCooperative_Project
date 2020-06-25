@@ -11,7 +11,7 @@ public class Batch {
 
     private String receivedDate;
 
-    private int weight;
+    private Double weight;
 
     private String farmN;
 
@@ -28,7 +28,7 @@ public class Batch {
      * @param fruitType
      * @param grades
      */
-    public Batch(int weight, String farmN, String fruitType, HashMap<String, Double> grades) {
+    public Batch(Double weight, String farmN, String fruitType, HashMap<String, Double> grades) {
         this.weight = weight;
         this.farmN = farmN;
         this.fruitType = fruitType;
@@ -46,7 +46,7 @@ public class Batch {
      * @param fruitType
      * @param grades
      */
-    public Batch(String id, String receivedDate, int weight, String farmN, String fruitType, HashMap<String, Double> grades) {
+    public Batch(String id, String receivedDate, Double weight, String farmN, String fruitType, HashMap<String, Double> grades) {
         this.id = id;
         this.receivedDate = receivedDate;
         this.weight = weight;
@@ -73,11 +73,11 @@ public class Batch {
         this.receivedDate = dateManager.getDate();
     }
 
-    public int getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 

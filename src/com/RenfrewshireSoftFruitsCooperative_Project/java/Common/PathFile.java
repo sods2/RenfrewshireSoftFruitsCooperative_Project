@@ -23,6 +23,7 @@ public enum PathFile {
     MENU_STEP1("MenuStep1"),
     MENU_STEP2("MenuStep2"),
     MENU_STEP3("MenuStep3"),
+    MENU_STEP4("MenuStep4"),
     HELPMENU("HelpMenu");
 
     private String pathString;

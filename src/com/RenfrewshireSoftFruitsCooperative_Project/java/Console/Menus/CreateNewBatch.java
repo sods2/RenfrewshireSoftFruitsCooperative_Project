@@ -7,6 +7,8 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.FruitManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.HashMap;
@@ -20,6 +22,7 @@ public class CreateNewBatch {
 
     Console console;
 
+    FileManagement fileManagement = new MyFile();
     BatchManager batchManager = new BatchManager();
     FruitManager fruitManager = new FruitManager();
 
@@ -90,11 +93,8 @@ public class CreateNewBatch {
      * Inserting a fruit type
      */
     private void insertFruitType(){
-        displayString("    Select a fruit type:");
-        displayString("        1. Strawberries");
-        displayString("        2. Raspberries");
-        displayString("        3. Blackberries");
-        displayString("        4. Gooseberries");
+        //read fruitChoice menu
+        fileManagement.read("FruitChoice");
         int fruitLoop = 0;
         while ("".equalsIgnoreCase(fruitType = fruitManager.getFruitCodesByID(fruitType))){
             if(fruitLoop>0){

@@ -3,6 +3,8 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
+
 public class DateManager {
 
     /**
@@ -39,6 +41,17 @@ public class DateManager {
         //returning formatted date
         return date.format(formatter);
 
+    }
+
+    /**
+     * Checking date format
+     *
+     * @param date
+     * @return true if condition is met
+     */
+    public boolean isDateValidFormat(String date) {
+        //Checking value format
+        return date.matches("\\d{2}[-]\\d{2}[-]\\d{4}");
     }
 
 }

@@ -1,0 +1,15 @@
+{
+  "260620-RA-026": {
+    "id": "260620-RA-026",
+    "receivedDate": "26 06 2020",
+    "weight": 62.0,
+    "farmN": "026",
+    "fruitType": "RA",
+    "grades": {
+      "GRADE C": 5.0,
+      "GRADE B": 50.0,
+      "GRADE A": 15.0,
+      "REJECTED": 30.0
+    }
+  }
+}

@@ -40,6 +40,14 @@ public class DateManagerTest {
 
     }
 
+    @Test
+    public void isDateValidFormatTest() {
+
+        Assert.assertTrue(dateManager.isDateValidFormat("03-06-2020"));
+        Assert.assertFalse(dateManager.isDateValidFormat("03062020"));
+        Assert.assertFalse(dateManager.isDateValidFormat("030620"));
+    }
+
     @After
     public void after(){
         dateManager = null;

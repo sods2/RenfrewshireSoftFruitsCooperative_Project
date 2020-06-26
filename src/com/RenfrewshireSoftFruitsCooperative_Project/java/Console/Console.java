@@ -81,7 +81,7 @@ public class Console {
      * Display Main Menu
      */
     public void displayMainMenu() {
-        fileManagement.read(PathFile.MENU_STEP3.toString());
+        fileManagement.read(PathFile.MENU_STEP4.toString());
         getCommand();
     }
 
@@ -138,6 +138,14 @@ public class Console {
     public boolean update_Payments() {
         UpdatePayments updatePayments = new UpdatePayments();
         return verifyProcess(updatePayments.updatePayments(this));
+    }
+
+    /**
+     * Displaying specified batch's info
+     */
+    public boolean Transactions_Report() {
+        TransactionsReport transactionsReport = new TransactionsReport();
+        return verifyProcess(transactionsReport.transactionsReport(this));
     }
 
     /**

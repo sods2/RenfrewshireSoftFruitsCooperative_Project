@@ -44,7 +44,7 @@ public class GradeBatch {
      * @param console
      * @return return true if the operation ended successfully
      */
-    public boolean gradeBatch(Console console) {
+    public boolean gradeBatch(Console console) {//TODO: add check on batch name input
 
         this.console= console;
 

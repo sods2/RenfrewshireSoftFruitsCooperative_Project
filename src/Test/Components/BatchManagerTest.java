@@ -8,13 +8,17 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 public class BatchManagerTest {
 
@@ -26,6 +30,12 @@ public class BatchManagerTest {
     HashMap<String, Double> grades = new HashMap<>();
     HashMap<String, Double> sizeZeroGrades = new HashMap<>();
 
+    FileManagement fileManagement = new MyJSON();
+    DataManager dataManager = new DataManager();
+
+    List<String> fileList;
+    List<Batch> batchList;
+
     @Before
     public void before(){
         //Preparing for gradeVerification
@@ -33,6 +43,15 @@ public class BatchManagerTest {
         grades.put(FruitGrade.GRADE_B.toString(), 30.5);
         grades.put(FruitGrade.GRADE_C.toString(), 21.0);
         grades.put(FruitGrade.REJECTED.toString(), 26.5);
+
+        //Preparing data for getBatchListByDateTest
+        //getting list of file names
+        fileList = fileManagement.getFileList(folder);
+        //getting data from all files
+        Data data = fileManagement.readAll(folder, fileList);
+        //getting batches' list
+        batchList = dataManager.processBatchData(data);
+
     }
 
     @Test
@@ -101,6 +120,15 @@ public class BatchManagerTest {
         Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 0.0, grades, "GRADE A"), "0,00");
         Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 0.1, grades, "GRADE A"), "0,02");
         Assert.assertNotEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 50.0, grades, "GRADE A"), "0,00");
+    }
+
+    @Test
+    public void getBatchListByDateTest() {
+
+        Assert.assertNotNull(batchManager.getBatchListByDate(batchList, "03 06 2020"));
+        Assert.assertEquals(batchManager.getBatchListByDate(batchList, "03 06 2020").get(0).getReceivedDate(), "03 06 2020");
+
+        Assert.assertEquals(batchManager.getBatchListByDate(batchList, "13 06 2020").size(), 0);
     }
 
     @After

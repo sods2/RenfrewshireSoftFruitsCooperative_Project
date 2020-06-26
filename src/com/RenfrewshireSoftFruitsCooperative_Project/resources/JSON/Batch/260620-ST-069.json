@@ -1,0 +1,15 @@
+{
+  "260620-ST-069": {
+    "id": "260620-ST-069",
+    "receivedDate": "26 06 2020",
+    "weight": 12.0,
+    "farmN": "069",
+    "fruitType": "ST",
+    "grades": {
+      "GRADE C": 20.0,
+      "GRADE B": 27.0,
+      "GRADE A": 23.0,
+      "REJECTED": 30.0
+    }
+  }
+}

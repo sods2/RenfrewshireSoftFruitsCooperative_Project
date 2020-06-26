@@ -203,7 +203,7 @@ public class DataInput {
     public static void trafficLight(Console console, String input){
         switch (input){
             //EXIT Application
-            case "exit": case "6":
+            case "exit": case "7":
                 displayString("Goodbye");
                 console.exit();
 
@@ -228,6 +228,9 @@ public class DataInput {
                 break;
             case "5": //Payments
                 console.update_Payments();
+                break;
+            case "6": //Transactions Report
+                console.Transactions_Report();
                 break;
 
             default://Should never be called

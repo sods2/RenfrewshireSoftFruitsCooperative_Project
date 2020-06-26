@@ -3,7 +3,6 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Menus;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
 import java.util.*;

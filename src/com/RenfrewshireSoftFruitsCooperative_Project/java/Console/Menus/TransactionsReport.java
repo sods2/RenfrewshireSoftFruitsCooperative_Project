@@ -4,6 +4,7 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.TransactionReportManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
@@ -60,7 +61,7 @@ public class TransactionsReport {
             }
 
             //Displaying Transactions' info
-            Display.displayTransactionReport(batchList);
+            Display.displayTransactionReport(batchListForReport);
 
             displayString("");
 
@@ -70,7 +71,7 @@ public class TransactionsReport {
 
             return true;
         } catch (Exception e) {
-            displayString("Error while trying to display batch Details\n");
+            displayString("Error while trying to display Transactions Report \n");
         }
         return false;
     }

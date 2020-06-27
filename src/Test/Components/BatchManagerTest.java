@@ -14,11 +14,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
 public class BatchManagerTest {
 
@@ -116,10 +113,10 @@ public class BatchManagerTest {
 
     @Test
     public void getGradePriceTest() {
-        Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 82.0, grades, "GRADE A"), "18,04");
-        Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 0.0, grades, "GRADE A"), "0,00");
-        Assert.assertEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 0.1, grades, "GRADE A"), "0,02");
-        Assert.assertNotEquals(BatchManager.getGradePrice(new DateManager().getDateForID(), "ST", 50.0, grades, "GRADE A"), "0,00");
+        Assert.assertEquals(BatchManager.getGradesPrice(new DateManager().getDateForID(), "ST", 82.0, grades, "GRADE A"), "18,04");
+        Assert.assertEquals(BatchManager.getGradesPrice(new DateManager().getDateForID(), "ST", 0.0, grades, "GRADE A"), "0,00");
+        Assert.assertEquals(BatchManager.getGradesPrice(new DateManager().getDateForID(), "ST", 0.1, grades, "GRADE A"), "0,02");
+        Assert.assertNotEquals(BatchManager.getGradesPrice(new DateManager().getDateForID(), "ST", 50.0, grades, "GRADE A"), "0,00");
     }
 
     @Test
@@ -129,6 +126,17 @@ public class BatchManagerTest {
         Assert.assertEquals(batchManager.getBatchListByDate(batchList, "03 06 2020").get(0).getReceivedDate(), "03 06 2020");
 
         Assert.assertEquals(batchManager.getBatchListByDate(batchList, "13 06 2020").size(), 0);
+    }
+
+    @Test
+    public void getBatchListByFruitTypeTest() {
+
+        Assert.assertNotNull(batchManager.getBatchListByFruitType(batchList, "ST"));
+        Assert.assertNotNull(batchManager.getBatchListByFruitType(batchList, "BL"));
+        Assert.assertNotNull(batchManager.getBatchListByFruitType(batchList, "RA"));
+        Assert.assertNotNull(batchManager.getBatchListByFruitType(batchList, "GO"));
+
+        Assert.assertNull(batchManager.getBatchListByFruitType(batchList, "test"));
     }
 
     @After

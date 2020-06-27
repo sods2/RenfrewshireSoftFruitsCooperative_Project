@@ -44,7 +44,7 @@ public class GradeBatch {
      * @param console
      * @return return true if the operation ended successfully
      */
-    public boolean gradeBatch(Console console) {//TODO: add check on batch name input
+    public boolean gradeBatch(Console console) {
 
         this.console= console;
 
@@ -53,7 +53,10 @@ public class GradeBatch {
             displayString("     Please enter Batch number:");
 
             //getting batch ID
-            filename = this.console.getInput();
+            while (!(filename = this.console.getInput()).matches("\\d{6}[-]\\w{2}[-]\\d{3}")){
+                displayString("Batch: " + filename + " Number is incorrect!\n" +
+                        "(Example: 210321-ST-005)");
+            }
 
             //Getting batch object
             batchList = batchManager.getBatchObj(folder, filename);

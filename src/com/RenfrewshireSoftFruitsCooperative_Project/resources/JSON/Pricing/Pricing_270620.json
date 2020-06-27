@@ -1,0 +1,34 @@
+{
+  "270620": {
+    "pricingList": {
+      "ST": {
+        "price": {
+          "GRADE C": 5.0,
+          "GRADE B": 10.0,
+          "GRADE A": 12.0
+        }
+      },
+      "GO": {
+        "price": {
+          "GRADE C": 2.0,
+          "GRADE B": 3.0,
+          "GRADE A": 5.0
+        }
+      },
+      "BL": {
+        "price": {
+          "GRADE C": 6.0,
+          "GRADE B": 7.0,
+          "GRADE A": 8.0
+        }
+      },
+      "RA": {
+        "price": {
+          "GRADE C": 8.0,
+          "GRADE B": 9.0,
+          "GRADE A": 10.0
+        }
+      }
+    }
+  }
+}

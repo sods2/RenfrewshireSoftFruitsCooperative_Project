@@ -2,6 +2,7 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Console;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.FruitManager;
+import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.TransactionReportManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Fruit;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
@@ -100,7 +101,7 @@ public class Display {
                             batchManager.calculateKg(entry.getValue(), e.getWeight()) + "KG" +
                             "   = £ " +
                             //Display Price
-                            BatchManager.getGradePrice(e.getId().substring(0, e.getId().length() - 7), e.getFruitType(), e.getWeight(), e.getGrades(), entry.getKey())
+                            BatchManager.getGradesPrice(e.getId().substring(0, e.getId().length() - 7), e.getFruitType(), e.getWeight(), e.getGrades(), entry.getKey())
                     );
                     displayString("");
                 }
@@ -114,27 +115,49 @@ public class Display {
 
     /**
      * Display Transaction report
+     *
+     * @param batchList
      */
-    public static void displayTransactionReport(List<Batch> batchList) {//TODO: modify
+    public static void displayTransactionReport(List<Batch> batchList) {
+        TransactionReportManager reportManager = new TransactionReportManager();
         FruitManager fruitManager = new FruitManager();
 
-        displayString("    FRUIT     GRADE A    GRADE B    GRADE C     REJECTED      TOTAL PAID");
+        Map<String, Double> priceTotalsMap = new HashMap<>();
+        Map<String, Double> weightTotalsMap = new HashMap<>();
+
+        List<Double> totalToPay = new ArrayList<>();
+
+        displayString("    FRUIT        GRADE A       GRADE B        GRADE C        REJECTED      TOTAL PAID");
 
         if (null != batchList) {
 
             for (Fruit fruit : fruitManager.getFruitList()) {
-                //Display Price
-                batchList.forEach(e -> {
-                    SortedMap<String, Double> sortedMap = new TreeMap<>(e.getGrades());
-                    for (Map.Entry<String, Double> entry : sortedMap.entrySet()) {
-                        displayString(
-                                //Display Price
-                                BatchManager.getGradePrice(e.getId().substring(0, e.getId().length() - 7), e.getFruitType(), e.getWeight(), e.getGrades(), entry.getKey())
-                        );
+                //Getting price totals to display
+                priceTotalsMap.putAll(reportManager.getPricesForTransactionReport(batchList, fruit));
+                totalToPay.add((priceTotalsMap.get("GRADE A") + priceTotalsMap.get("GRADE B") + priceTotalsMap.get("GRADE C")));
+                
+                //Getting weight total to Display
+                weightTotalsMap.putAll(reportManager.getWeightsForTransactionReport(batchList, fruit));
 
-                    }
-                });
+                //Display Price Totals
+                displayString(  fruit.getName()               + "  |  £ "
+                                    + priceTotalsMap.get("GRADE A")      + "   |  £ "
+                                    + priceTotalsMap.get("GRADE B")      + "    |   £ "
+                                    + priceTotalsMap.get("GRADE C")      + "     |      £ 0.0    |   £ "
+                                    + (priceTotalsMap.get("GRADE A") + priceTotalsMap.get("GRADE B") + priceTotalsMap.get("GRADE C")));
+
+                //Display Price Totals
+                displayString(  "              | KG "
+                        + String.format("%.3f", weightTotalsMap.get("GRADE A"))      + "  |  KG "
+                        + String.format("%.3f", weightTotalsMap.get("GRADE B"))      + "  |   KG "
+                        + String.format("%.3f", weightTotalsMap.get("GRADE C"))      + "  |   KG "
+                        + String.format("%.3f", weightTotalsMap.get("REJECTED"))      + "\n");
+
+                priceTotalsMap = new HashMap<>();
+                weightTotalsMap = new HashMap<>();
             }
+
+            displayString("TOTAL PAID: £ " + String.format("%.2f", totalToPay.stream().reduce(0.0, Double::sum)));
 
             displayString("");
         } else {

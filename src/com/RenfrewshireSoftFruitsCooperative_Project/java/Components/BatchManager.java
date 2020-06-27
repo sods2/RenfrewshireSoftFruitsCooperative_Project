@@ -6,7 +6,6 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.Fi
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -185,7 +184,7 @@ public class BatchManager {
      * @param grade
      * @return batch price tot
      */
-    public static String getGradePrice(String date, String fruitType, Double weight, Map<String, Double> grades, String grade) {
+    public static String getGradesPrice(String date, String fruitType, Double weight, Map<String, Double> grades, String grade) {
 
         Map<String, Double> priceMap;
 
@@ -193,7 +192,6 @@ public class BatchManager {
         String kgPerGrade;
 
         try {
-
             //Getting Price Map
             priceMap = priceMapForDisplay(fruitType, date);
 
@@ -204,6 +202,7 @@ public class BatchManager {
 
                     //Getting how many kg for the specified Grade (Price.getKey represents the Grade)
                     kgPerGrade = new BatchManager().calculateKg(grades.get(price.getKey()), weight);
+
                     //Adding to the total each price value for each grade amount and relative price
                     if (grade.equalsIgnoreCase(price.getKey())) {
                         gradePrice = price.getValue() * Double.parseDouble(kgPerGrade.replace(",", "."));
@@ -230,7 +229,7 @@ public class BatchManager {
      * @param grade
      * @return batch price tot
      */
-    public static String getTransactionReportPrice(String date, String fruitType, Double weight, Map<String, Double> grades, String grade) {//TODO: modify this to work with a specific grade and fruit type
+    public String getTotPriceByGrade(String date, String fruitType, Double weight, Map<String, Double> grades, String grade) {
 
         Map<String, Double> priceMap;
 
@@ -238,7 +237,6 @@ public class BatchManager {
         String kgPerGrade;
 
         try {
-
             //Getting Price Map
             priceMap = priceMapForDisplay(fruitType, date);
 
@@ -248,7 +246,8 @@ public class BatchManager {
                 for (Map.Entry<String, Double> price : priceMap.entrySet()) {
 
                     //Getting how many kg for the specified Grade (Price.getKey represents the Grade)
-                    kgPerGrade = new BatchManager().calculateKg(grades.get(price.getKey()), weight);
+                    kgPerGrade = new BatchManager().calculateKg(grades.get(grade), weight);
+
                     //Adding to the total each price value for each grade amount and relative price
                     if (grade.equalsIgnoreCase(price.getKey())) {
                         gradePrice = price.getValue() * Double.parseDouble(kgPerGrade.replace(",", "."));
@@ -305,6 +304,21 @@ public class BatchManager {
         } catch (Exception e) {
             displayString("Error while getting Batch List by date");
             return null;
+        }
+        return null;
+    }
+
+    /**
+     * Getting Batch List by specified Fruit Type
+     * @param batchList
+     * @param fruitType
+     * @return list of batches of the specified fruitType
+     */
+    public List<Batch> getBatchListByFruitType(List<Batch> batchList, String fruitType){
+
+        switch (fruitType){
+            case "ST": case "RA": case "BL": case "GO":
+                return batchList.stream().filter(e -> e.getFruitType().equalsIgnoreCase(fruitType)).collect(Collectors.toList());
         }
         return null;
     }

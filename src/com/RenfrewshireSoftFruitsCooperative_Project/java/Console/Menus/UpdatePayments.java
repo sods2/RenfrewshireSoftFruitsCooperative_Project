@@ -129,6 +129,7 @@ public class UpdatePayments {
         while(!getPrice());
         price.getPrice().put(FruitGrade.GRADE_C.toString(), price_input);
 
+//        price.getPrice().put(FruitGrade.REJECTED.toString(), 0.0);
     }
 
     /**

@@ -77,7 +77,12 @@ public class PricingManagerTest {
 
     @After
     public void after(){
-
+        pricingManager = null;
+        dataManager = null;
+        dateManager = null;
+        data = null;
+        pricing = null;
+        price = null;
     }
 
     private void createTestFile(){

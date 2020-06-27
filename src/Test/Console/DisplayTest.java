@@ -82,6 +82,16 @@ public class DisplayTest {
         Assert.assertFalse(pricing.getPricingList().containsKey("GO"));
     }
 
+    /**
+     * For this test to work a file batch with a received date of today is needed (change file name on the top of the class)
+     */
+    @Test
+    public void displayTransactionReportTest() {
+        System.out.println("Testing display of both total of price and total of weight sorted by fruitType and grade the format should be (Fruit Type) - { GRADE A: value, GRADE B: value, GRADE C: value }");
+        System.out.println();
+        Display.displayTransactionReport(batchList);
+    }
+
     @After
     public void after(){
         batchList = null;

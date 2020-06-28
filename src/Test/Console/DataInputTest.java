@@ -9,6 +9,9 @@ import java.io.InputStream;
 
 import static junit.framework.TestCase.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DataInputTest {
 
     InputStream inputStream;

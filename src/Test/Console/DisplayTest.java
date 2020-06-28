@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DisplayTest {
     private final String folder = PathFile.TESTPATH.toString();
     private final String test_filename = PathFile.JSON_TEST + "_030620-BL-001";

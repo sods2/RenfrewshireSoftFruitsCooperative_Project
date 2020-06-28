@@ -18,6 +18,9 @@ import java.util.List;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constants.JSON_EXERTION;
 import static org.junit.Assert.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class MyJSONTest {
 
     FileManagement fileManagement;

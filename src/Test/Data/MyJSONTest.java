@@ -57,7 +57,7 @@ public class MyJSONTest {
         Assert.assertNotNull(fileManagement.readAll(PathFile.TESTPATH.toString(), files));
 
         //Test all files are retrieved
-        Assert.assertEquals(fileManagement.readAll(PathFile.TESTPATH.toString(), files).getData().size(), files.size());
+        Assert.assertEquals(fileManagement.readAll(PathFile.TESTPATH.toString(), files).getData().size(), 2);
     }
 
     @After

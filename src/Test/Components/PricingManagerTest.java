@@ -9,13 +9,10 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Console;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Pricing;
-import com.sun.xml.internal.ws.api.FeatureListValidatorAnnotation;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Alessandro Spano (Student N. rmb19196)

@@ -2,7 +2,6 @@ package Test.Components;
 
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DateManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
@@ -16,8 +15,10 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DataManagerTest {
 
     FileManagement fileManagement = new MyJSON();

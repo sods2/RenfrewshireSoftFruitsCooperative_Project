@@ -5,6 +5,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.IDGenerator;
 
 import java.util.HashMap;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class Batch {
 
     private String id;

@@ -1,8 +1,6 @@
 package Test.Components;
 
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.FruitGrade;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.DataManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.TransactionReportManager;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
@@ -17,12 +15,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static org.junit.Assert.*;
-
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class TransactionReportManagerTest {
 
     TransactionReportManager reportManager = new TransactionReportManager();

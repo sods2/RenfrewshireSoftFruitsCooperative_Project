@@ -6,6 +6,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.My
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class FileManagementTest {
 
     FileManagement fileManagement = new MyJSON();

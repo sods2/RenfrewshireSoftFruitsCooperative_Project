@@ -9,6 +9,9 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DateManagerTest {
 
     DateManager dateManager = new DateManager();

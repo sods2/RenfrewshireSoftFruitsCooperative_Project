@@ -5,7 +5,6 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Batch;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Price;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Pricing;
 import com.google.gson.Gson;
 
@@ -13,6 +12,9 @@ import java.util.*;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DataManager {
 
     /**

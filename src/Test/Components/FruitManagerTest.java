@@ -10,6 +10,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class FruitManagerTest {
 
     List<Fruit> fruitList = new ArrayList<>();

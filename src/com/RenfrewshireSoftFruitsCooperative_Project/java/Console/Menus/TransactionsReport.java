@@ -17,6 +17,11 @@ import java.util.List;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
+/**
+ * Using this Class to create the Console UI for displaying a Transaction Report of a specified Day
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class TransactionsReport {
 
     Console console;

@@ -11,6 +11,8 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 
 /**
  * Using this Class to display, to the Console UI, details about a specified batch
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public class ViewBatchDetails {
 

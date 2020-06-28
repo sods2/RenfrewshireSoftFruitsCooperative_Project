@@ -1,5 +1,8 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Common;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class Constants {
 
     //Fruit Code

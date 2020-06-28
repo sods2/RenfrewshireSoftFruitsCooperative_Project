@@ -17,6 +17,9 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class BatchManagerTest {
 
     private final String folder = PathFile.TESTPATH.toString();

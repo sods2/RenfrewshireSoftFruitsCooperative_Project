@@ -6,6 +6,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.Fruit;
 
 import java.util.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class TransactionReportManager {
 
     BatchManager batchManager = new BatchManager();

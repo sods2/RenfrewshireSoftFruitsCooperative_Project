@@ -15,6 +15,8 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 
 /**
  * Using this Class to create the Console UI for listing all batches
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public class ListAllBatches {
 

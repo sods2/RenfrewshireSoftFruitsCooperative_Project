@@ -17,6 +17,8 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 
 /**
  * Abstract Class For File Management
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public abstract class FileManagement {
 

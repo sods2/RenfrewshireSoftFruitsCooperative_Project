@@ -5,6 +5,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Entities.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class FruitManager {
 
     List<Fruit> fruitList = new ArrayList<>();

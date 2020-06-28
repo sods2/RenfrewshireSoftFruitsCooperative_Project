@@ -12,6 +12,8 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 
 /**
  * All operation fo batch are executed on this class
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public class BatchManager {
 

@@ -7,6 +7,9 @@ import java.util.List;
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class PricingManager {
 
     FileManagement fileManagement = new MyJSON();

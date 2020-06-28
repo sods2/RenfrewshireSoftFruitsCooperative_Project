@@ -11,6 +11,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.My
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class Console {
 
     final private String folder = "Pricing";

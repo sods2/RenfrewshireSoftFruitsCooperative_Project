@@ -17,6 +17,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class PricingManagerTest {
 
     Console console = new Console();

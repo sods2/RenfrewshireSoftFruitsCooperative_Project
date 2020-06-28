@@ -16,8 +16,10 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DataManagerTest {
 
     FileManagement fileManagement = new MyJSON();

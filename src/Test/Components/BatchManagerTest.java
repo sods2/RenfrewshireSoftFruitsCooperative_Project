@@ -3,17 +3,16 @@ package Test.Components;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.FruitGrade;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Common.PathFile;
 import com.RenfrewshireSoftFruitsCooperative_Project.java.Components.BatchManager;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.Data;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.FileManagement;
-import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.MyJSON;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
-import java.util.List;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class BatchManagerTest {
 
     private final String folder = PathFile.TESTPATH.toString();

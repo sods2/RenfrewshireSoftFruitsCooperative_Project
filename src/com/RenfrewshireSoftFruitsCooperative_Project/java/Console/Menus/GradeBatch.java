@@ -167,7 +167,7 @@ public class GradeBatch {
 
         } catch (Exception e){
             displayString("Grade format is incorrect!\n" +
-                    "Example (0 or 50 or 25,5)");
+                    "Example (0 or 50 or 25.5)");
             return false;
         }
     }

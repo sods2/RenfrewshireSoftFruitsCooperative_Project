@@ -3,6 +3,9 @@ package com.RenfrewshireSoftFruitsCooperative_Project.java.Components;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DateManager {
 
     /**

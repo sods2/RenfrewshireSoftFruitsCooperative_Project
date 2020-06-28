@@ -1,5 +1,8 @@
 package com.RenfrewshireSoftFruitsCooperative_Project.java.Entities;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public abstract class Fruit {
 
     private String ID;

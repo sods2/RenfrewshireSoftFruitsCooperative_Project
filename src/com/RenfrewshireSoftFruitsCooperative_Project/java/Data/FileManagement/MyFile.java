@@ -18,7 +18,7 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display
 /**
  * Using this class to Read Files
  *
- * @author rmb19196 (Alessandro Spano)
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public class MyFile extends FileManagement {
 

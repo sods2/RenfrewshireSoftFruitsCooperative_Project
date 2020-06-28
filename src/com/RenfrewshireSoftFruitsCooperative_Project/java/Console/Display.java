@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 
 /**
  * Displaying data to the console
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public class Display {
 

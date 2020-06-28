@@ -6,6 +6,9 @@ import static com.RenfrewshireSoftFruitsCooperative_Project.java.Common.Constant
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Command.COMMAND_LIST;
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.Display.displayString;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DataInput {
 
     private static Scanner scanner;

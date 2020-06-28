@@ -8,6 +8,9 @@ import com.RenfrewshireSoftFruitsCooperative_Project.java.Data.FileManagement.My
 
 import static com.RenfrewshireSoftFruitsCooperative_Project.java.Console.DataInput.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class Console {
 
     MyFile myFile = new MyFile();

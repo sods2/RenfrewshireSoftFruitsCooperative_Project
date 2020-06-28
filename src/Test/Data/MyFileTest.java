@@ -16,6 +16,9 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class MyFileTest {
 
     FileManagement fileManagement;

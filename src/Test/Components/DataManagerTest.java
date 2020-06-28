@@ -10,6 +10,9 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class DataManagerTest {
 
     Data data;

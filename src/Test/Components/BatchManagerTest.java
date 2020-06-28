@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class BatchManagerTest {
 
     BatchManager batchManager = new BatchManager();

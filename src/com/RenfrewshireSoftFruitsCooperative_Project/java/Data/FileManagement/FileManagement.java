@@ -7,6 +7,8 @@ import java.io.IOException;
 
 /**
  * Abstract Class For File Management
+ *
+ * @author Alessandro Spano (Student N. rmb19196)
  */
 public abstract class FileManagement {
 

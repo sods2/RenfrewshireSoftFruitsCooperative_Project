@@ -15,6 +15,9 @@ import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Alessandro Spano (Student N. rmb19196)
+ */
 public class MyJSONTest {
 
     FileManagement fileManagement;

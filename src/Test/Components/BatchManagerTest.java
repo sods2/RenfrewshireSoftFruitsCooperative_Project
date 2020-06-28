@@ -65,12 +65,12 @@ public class BatchManagerTest {
 
     @Test
     public void calculateKg() {
-        Assert.assertEquals(batchManager.calculateKg(5.0, 100), "5,000");
-        Assert.assertEquals(batchManager.calculateKg(25, 100), "25,000");
-        Assert.assertEquals(batchManager.calculateKg(50.0, 100), "50,000");
-        Assert.assertEquals(batchManager.calculateKg(10.0, 39), "3,900");
-        Assert.assertEquals(batchManager.calculateKg(50.0, 60), "30,000");
-        Assert.assertEquals(batchManager.calculateKg(122.0, 80), "97,600");
+        Assert.assertEquals(batchManager.calculateKg(5.0, 100), "5.000");
+        Assert.assertEquals(batchManager.calculateKg(25, 100), "25.000");
+        Assert.assertEquals(batchManager.calculateKg(50.0, 100), "50.000");
+        Assert.assertEquals(batchManager.calculateKg(10.0, 39), "3.900");
+        Assert.assertEquals(batchManager.calculateKg(50.0, 60), "30.000");
+        Assert.assertEquals(batchManager.calculateKg(122.0, 80), "97.600");
     }
 
     @Test
